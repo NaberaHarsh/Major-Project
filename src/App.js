@@ -3,6 +3,8 @@ import './App.css';
 import ControlledCarousel from './carousel/carousel'
 import Navigation from './Navigation/nav'
 import Cards from './cards/cards'
+import InfoBox from './infobox/infobox'
+import Footer from './footer/footer'
 
 
 class App extends React.Component{
@@ -18,9 +20,18 @@ class App extends React.Component{
       <Navigation />
       <ControlledCarousel />
       <Cards />
+      <br></br>
+
+      <InfoBox />
+      <br></br>
+      <Footer></Footer>
       
       
+
+
       </div>
+      
+      
   }
 }
 

@@ -1,0 +1,24 @@
+#info_box{
+    background: brown;
+    color: white;
+  }
+
+  #aa{
+    padding-top: 10px;
+    text-align: center;
+    font-size:60px;
+font-family: 'Courier New', Courier, monospace;
+color: rgb(240, 233, 240);
+font-weight: bold;
+  }
+
+  #bb{
+    text-align: center;
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+  }
+  #cc{
+    font-size: 15px;
+    color: white;
+  }
