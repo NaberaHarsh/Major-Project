@@ -1,6 +1,7 @@
 import React from 'react';
 import {Carousel   } from 'react-bootstrap'
 import './carousel.css'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class ControlledCarousel extends React.Component {
     constructor(props, context) {
@@ -25,6 +26,7 @@ class ControlledCarousel extends React.Component {
       const { index, direction } = this.state;
   
       return (
+        <Link to="/">
         <Carousel
           activeIndex={index}
           direction={direction}
@@ -57,6 +59,7 @@ class ControlledCarousel extends React.Component {
             
           </Carousel.Item>
         </Carousel>
+        </Link>
       );
     }
   }

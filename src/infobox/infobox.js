@@ -1,11 +1,14 @@
 import React from 'react';
 import './infobox.css'
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 class InfoBox extends React.Component{
 
     render(){
         return(
+          <Link to="/">
             <div>
                 <div id="info_box">
         <h3 id="aa">About Us</h3>
@@ -48,6 +51,7 @@ class InfoBox extends React.Component{
        </div>
        </div>
         </div>
+        </Link>
         )
     }
 }

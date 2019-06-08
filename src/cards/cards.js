@@ -1,24 +1,29 @@
 import React from 'react'
 import { Card , Button, CardColumns, CardDeck, Carousel, CarouselItem} from 'react-bootstrap'
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Cards extends React.Component{
     render(){
         return(
+          <Link to="/">
             <div>
+              
                 <Carousel>
                     <CarouselItem>
                 <CardDeck>
+                
                 <Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-  <Card.Img variant="top" src="https://charujewelsonline.com/wp-content/uploads/2016/10/CJSPS0122-Y.jpg" />
+                <Card.Img variant="top" src="https://charujewelsonline.com/wp-content/uploads/2016/10/CJSPS0122-Y.jpg" />
   <Card.Body style={{textAlign:"center"}}>
-    <Card.Title >Pendant</Card.Title>
+    <Card.Title><Link to='/pendant/'>Pendant</Link> </Card.Title>
   </Card.Body>
 </Card>
+
+
 <Card style={{ width: '18rem' , marginTop:20 }}>
   <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
   <Card.Body style={{textAlign:"center"}}>
-    <Card.Title >Earring</Card.Title>
+    <Card.Title > <Link to='/earring/'>Earring</Link></Card.Title>
   </Card.Body>
 </Card>
 <Card style={{ width: '18rem' , marginTop:20 }}>
@@ -81,6 +86,7 @@ class Cards extends React.Component{
 </CarouselItem>
 </Carousel>
             </div>
+            </Link>
         )
     }
 }

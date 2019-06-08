@@ -1,6 +1,8 @@
 import React from 'react';
 // import NavDropdown from './dropdown'
-import { Navbar, Container, Nav, Form, FormControl, Button, NavDropdown } from 'react-bootstrap'
+import { Navbar, Container, Nav, Form, FormControl, Button, NavDropdown, Dropdown } from 'react-bootstrap'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import Login from './profile/login'
 
 
 
@@ -8,6 +10,7 @@ class Navigation extends React.Component {
     render() {
         return (
             <div>
+                
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
                     <a className="navbar-brand" href="/" >MJ</a>
                     <form className="form-inline " >
@@ -20,7 +23,7 @@ class Navigation extends React.Component {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active" style={{marginLeft:50}}>
+                            <li className="nav-item active" style={{marginLeft:30}}>
                                 <a className="nav-link" href="/">Jewellery <span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item dropdown" >
@@ -48,6 +51,20 @@ class Navigation extends React.Component {
                             <li className="nav-item">
                                 <a className="nav-link active " href="/">Profile</a>
                             </li>
+                            <li className="nav-item dropdown" >
+                                <NavDropdown name="Dropdown">
+                                         
+                                            <Link to='/login' className="dropdown-item">Login</Link>
+
+                                           
+                                            
+                                        
+                                    <a className="dropdown-item" href="/">Track Order</a>
+                                    <a className="dropdown-item" href="/">My Orders</a>
+                                    <a className="dropdown-item" href="/">SignOut</a>
+                                </NavDropdown>
+                            </li>
+
                         </ul>
                     </div>
                 </nav><br />
