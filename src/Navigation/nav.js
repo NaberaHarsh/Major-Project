@@ -45,8 +45,9 @@ class Navigation extends React.Component {
                                 </NavDropdown>
                             </li>
                                 <li className="nav-item">
-                                <a className="nav-link active" href="/">Cart</a>
-                            </li>
+                                
+                                    <a className="nav-link active"> Cart </a>        
+                                                       </li>
                             
                             <li className="nav-item">
                                 <a className="nav-link active " href="/">Profile</a>

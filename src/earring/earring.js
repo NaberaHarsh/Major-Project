@@ -50,7 +50,7 @@ function Earring(){
                 <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
   <Card.Body style={{textAlign:"center"}}>
     <Card.Title>
-    AD Earring </Card.Title>
+    <Link to='/item1'>AD Earring</Link> </Card.Title>
     <Card.Text>
       Rs 799/- only
     </Card.Text>

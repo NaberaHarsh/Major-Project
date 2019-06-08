@@ -10,6 +10,8 @@ import Login from './profile/login'
 import Signup from './profile/signup'
 import Pendant from './pendant/pendant'
 import Earring from './earring/earring'
+import Item from './earring/earring_item'
+// import Cart from './cart/cart'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -41,7 +43,8 @@ class App extends React.Component{
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
       <Route path="/earring/" component={Earring} />
-      
+      <Route path="/item1/" component={Item} />
+      {/* <Route path="/cart/" component={Cart} /> */}
       <Footer />
       </div>
       </Router>
