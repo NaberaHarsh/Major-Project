@@ -2,6 +2,8 @@ import React from 'react'
 import './earring_item.css'
 import { Button } from 'react-bootstrap';
 import { Icon } from 'antd';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 class Item extends React.Component{
@@ -26,7 +28,8 @@ class Item extends React.Component{
 <br></br>
 <br></br>
 
-<Button variant="warning">Add Review</Button>
+<Button variant="warning">
+    <Link to='/review/'>Add Review</Link></Button>
 </center>
                     </div>
                     <div className="col-2" >
@@ -52,7 +55,7 @@ class Item extends React.Component{
                             </select>
                         </form>
                         <br></br>
-                        <pre>  <Icon type="share-alt" />     <Icon type="heart" />
+                        <pre>  <Icon type="share-alt" style={{fontSize:40}}/>     <Icon type="heart" style={{fontSize:40}}/>
                         </pre>
 
                     </div>

@@ -24,33 +24,33 @@ class Navigation extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active" style={{marginLeft:30}}>
-                                <a className="nav-link" href="/">Jewellery <span className="sr-only">(current)</span></a>
+                                <a className="nav-link">Jewellery <span className="sr-only">(current)</span></a>
                             </li>
                             <li className="nav-item dropdown" >
                                 <NavDropdown name="Dropdown">
-                                    <a className="dropdown-item" href="/">American Diamond</a>
-                                    <a className="dropdown-item" href="/">Victorian Jewellery</a>
-                                    <a className="dropdown-item" href="/">Antique Items</a>
+                                    <a className="dropdown-item">American Diamond</a>
+                                    <a className="dropdown-item">Victorian Jewellery</a>
+                                    <a className="dropdown-item" >Antique Items</a>
                                 </NavDropdown>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/" >New Arrival</a>
+                                <a className="nav-link active"  >New Arrival</a>
                                 </li>
                                 <li className="nav-item dropdown" >
                                 <NavDropdown name="Dropdown">
-                                    <a className="dropdown-item" href="/">Earrings</a>
-                                    <a className="dropdown-item" href="/">Necklace</a>
-                                    <a className="dropdown-item" href="/">Rings</a>
-                                    <a className="dropdown-item" href="/">Mangalsutra</a>
+                                    <a className="dropdown-item">Earrings</a>
+                                    <a className="dropdown-item">Necklace</a>
+                                    <a className="dropdown-item">Rings</a>
+                                    <a className="dropdown-item">Mangalsutra</a>
                                 </NavDropdown>
                             </li>
                                 <li className="nav-item">
                                 
-                                    <a className="nav-link active"> Cart </a>        
+                                    <Link to='/cart/' className="nav-link active"> Cart </Link>        
                                                        </li>
                             
                             <li className="nav-item">
-                                <a className="nav-link active " href="/">Profile</a>
+                                <a className="nav-link active " >Profile</a>
                             </li>
                             <li className="nav-item dropdown" >
                                 <NavDropdown name="Dropdown">
@@ -60,9 +60,9 @@ class Navigation extends React.Component {
                                            
                                             
                                         
-                                    <a className="dropdown-item" href="/">Track Order</a>
-                                    <a className="dropdown-item" href="/">My Orders</a>
-                                    <a className="dropdown-item" href="/">SignOut</a>
+                                    <a className="dropdown-item" >Track Order</a>
+                                    <a className="dropdown-item" >My Orders</a>
+                                    <a className="dropdown-item" >SignOut</a>
                                 </NavDropdown>
                             </li>
 

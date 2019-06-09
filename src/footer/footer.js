@@ -1,5 +1,6 @@
 import React from 'react'
 import './footer.css'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Footer extends React.Component{
 
@@ -9,7 +10,7 @@ class Footer extends React.Component{
                 <div class="row">
                     <div class="col-4" style={{textAlign:"center", marginTop:20}}>
                         <h3>Customer service</h3>
-                        <h5>Help and Support</h5>
+                        <h5><Link to='/help/'>Help and Support</Link></h5>
                         <h5>Return Product</h5>
                         <h5>Replacement</h5>
                         <h5>Find Store</h5>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Form, Button} from 'react-bootstrap'
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
@@ -21,7 +21,7 @@ function Signup(){
     <Form.Control type="password" placeholder="Password" />
   </Form.Group>
   <Button variant="primary" type="submit">
-    Create New Account
+  <a href="/" >Create New Account</a>
   </Button>
 </Form>
 <br></br>

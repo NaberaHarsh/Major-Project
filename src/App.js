@@ -11,9 +11,14 @@ import Signup from './profile/signup'
 import Pendant from './pendant/pendant'
 import Earring from './earring/earring'
 import Item from './earring/earring_item'
-// import Cart from './cart/cart'
-
+import Cart from './cart/cart'
+import Review from './earring/review'
+import Address from './cart/address'
+import Payment from './cart/payment'
+import Placed from './cart/placed'
+import Help from './footer/help'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 
@@ -44,8 +49,14 @@ class App extends React.Component{
       <Route path="/pendant/" component={Pendant} />
       <Route path="/earring/" component={Earring} />
       <Route path="/item1/" component={Item} />
-      {/* <Route path="/cart/" component={Cart} /> */}
-      <Footer />
+      <Route path="/cart/" component={Cart} />
+      <Route path="/review/" component={Review} />
+      <Route path="/payment/" component={Payment} />
+      <Route path="/placed/" component={Placed} />
+      <Route path="/address/" component={Address} />
+      <Route path="/help/" component={Help} />     
+            <Footer />
+            
       </div>
       </Router>
     )   
