@@ -24,7 +24,8 @@ class Item extends React.Component{
 <br></br>
 <br></br>
 <center>
-<Button variant="dark">Add To Cart</Button>
+<Button variant="dark">
+    <Link to='/cart/'>Add To Cart</Link></Button>
 <br></br>
 <br></br>
 
@@ -55,7 +56,7 @@ class Item extends React.Component{
                             </select>
                         </form>
                         <br></br>
-                        <pre>  <Icon type="share-alt" style={{fontSize:40}}/>     <Icon type="heart" style={{fontSize:40}}/>
+                        <pre><Icon type="share-alt" style={{fontSize:30}}/>   <Icon type="heart" style={{fontSize:30}}/>
                         </pre>
 
                     </div>

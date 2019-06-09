@@ -1,6 +1,7 @@
 import React from 'react'
 import { Rate, Rater } from 'antd';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 
 function Review(){
@@ -14,7 +15,8 @@ function Review(){
     <input type="file" name="Add Image"></input>
 </form>
 <br></br>
-<Button variant="warning">Submit Review</Button>
+<Button variant="warning">
+    <Link to='/item1/'>Submit Review</Link></Button>
 <br></br>
 <br></br>
         </div>

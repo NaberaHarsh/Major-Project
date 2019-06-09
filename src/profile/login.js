@@ -31,7 +31,7 @@ class Login extends React.Component{
 
   
   <Button variant="primary" type="submit">
-    Submit
+    <a href='/'>Submit</a>
   </Button>
   
   

@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function Placed(){
     return(
+    
     alert("your order has been placed")
+    
     )
 }
   

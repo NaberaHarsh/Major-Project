@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+// import ReactDOM from 'react-dom';
+// import mountNode from 'antd'
 import ControlledCarousel from './carousel/carousel'
 import Navigation from './Navigation/nav'
 import Cards from './cards/cards'
@@ -18,6 +20,7 @@ import Payment from './cart/payment'
 import Placed from './cart/placed'
 import Help from './footer/help'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { DatePicker } from 'antd';
 
 
 
@@ -54,7 +57,8 @@ class App extends React.Component{
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
       <Route path="/address/" component={Address} />
-      <Route path="/help/" component={Help} />     
+      <Route path="/help/" component={Help} />  
+      
             <Footer />
             
       </div>
@@ -62,5 +66,6 @@ class App extends React.Component{
     )   
   }
 }
+
 
 export default App;
