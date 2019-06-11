@@ -1,15 +1,22 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { CardDeck , Card, CardColumns, Dropdown, Nav} from 'react-bootstrap';
+import { CardDeck , CardColumns, Dropdown, Nav} from 'react-bootstrap';
+import {Card} from 'antd'
+import 'antd/dist/antd.css';
+import {Row, Icon, Col, Avatar } from 'antd';
+import { Button } from 'react-bootstrap';
+const { Meta } = Card;
 
-function Earring(){
+class Earring extends React.Component{
+
+  render(){
 
 
         return (
            
             <div>
-                <div className="row">
-                    <div className="col-4">
+                <Row>
+                    <Col span={6}>
                         <h3>Apply Filters</h3>
                         <br></br>
                         <ul type="none">
@@ -19,9 +26,9 @@ function Earring(){
                             <br></br>
                             <li>Ocassion</li>
                         </ul>
-                    </div>
+                        </Col>
                     
-                    <div className="col-8">
+                    <Col span={18}>
                     <h3 style={{textAlign:"right", paddingRight:100}}>Sort</h3>
                         <Nav className="justify-content-end" activeKey="/home">
     <Nav.Item>
@@ -44,8 +51,33 @@ function Earring(){
 </Dropdown>
     </Nav.Item>
   </Nav>
+
+  <Link to='/item1'>
+      <Row> 
+        {this.props.db.products.map(p=> <Col span={8}>
+        <Card
+      style={{ width: 250 }}
+      cover={
+        <img
+          alt="example"
+          src={p.image}
+        />
+      }
+      actions={[<Button variant="warning">Add To Cart</Button>]}
+    >
+      <center>
+          <Meta
+        title={p.name}
+        description={p.Price}
+      />
+      
+      </center>
+    </Card>
+    </Col>)}
+      </Row>
+        </Link>
                         
-                        <CardDeck>
+                        {/* <CardDeck>
                         <Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
                 <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
   <Card.Body style={{textAlign:"center"}}>
@@ -140,15 +172,17 @@ function Earring(){
     </Card.Text>
   </Card.Body>
 </Card>
-</CardDeck>
+</CardDeck> */}
 
-                    </div>
-                    </div>
+                    
+                    </Col>
                     <br></br>
+                    </Row>
             </div>
         
         )
     }
+  }
 
 
 export default Earring;

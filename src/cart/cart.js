@@ -41,10 +41,10 @@ return(
       <tr>
         
         <td>
-        <Link to='/item1/'><img src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" id="hh"></img></Link>
+        <Link to='/item1/'><img src=".././assets/earring.jpg" id="hh"></img></Link>
         </td>
         <td>sample Description</td>
-        <td style={{color:"darkred"}}>Rs. 799/-</td>
+        <td style={{color:"darkred"}}>Rs. 599/-</td>
         <td><form>
           <select>
             
