@@ -77,9 +77,9 @@ class Navigation extends React.Component {
                                 >
                                     <p>
                                     <Link to='/login' on onClick={this.onClose}>Login </Link></p>
-                                    <p>My Order</p>
+                                    <p><Link to='/order' on onClick={this.onClose}>My Order</Link></p>
                                     <p><Link to='/track/' on onClick={this.onClose} >Track Order</Link></p>
-                                    <p>Sign Out</p>
+                                    <p><a href="/">Sign Out</a></p>
                                 </Drawer>
                             </li>
                             {/* <li className="nav-item dropdown" >

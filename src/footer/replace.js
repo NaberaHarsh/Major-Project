@@ -7,7 +7,7 @@ import {Modal, Button, ButtonToolbar } from 'react-bootstrap'
 
 const { Step } = Steps;
 
-class MyVerticallyCenteredModal extends React.Component {
+class ReplaceModal extends React.Component {
   render() {
     
     return (
@@ -20,16 +20,18 @@ class MyVerticallyCenteredModal extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Cancel Product
+            Replace Product
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
-            <label>why do you want to cancel ?</label>
+            <label>why do you want to replace ?</label>
             <select>
-              <option>i don't like it</option>
-              <option>i ordered wrong product</option>
-              <option>i don't need it anymore</option>
+              <option>different color then i ordered</option>
+              <option>this us not what i ordered</option>
+              
+              <option>product is damaged</option>
+
               <option value="other">other</option>
             </select><br></br>
             <textarea name="reason" cols="70"></textarea>
@@ -37,7 +39,7 @@ class MyVerticallyCenteredModal extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           
-          <Button onClick={this.props.onHide} variant="warning">Confirm Cancellation</Button>
+          <Button onClick={this.props.onHide} variant="warning">Replace Product</Button>
           
         </Modal.Footer>
       </Modal>
@@ -47,7 +49,7 @@ class MyVerticallyCenteredModal extends React.Component {
 
 
 
-class Track extends React.Component{
+class Replace extends React.Component{
   constructor(...args) {
     super(...args);
 
@@ -60,7 +62,7 @@ class Track extends React.Component{
   return (
     <div>
       <Row>
-        {this.props.db.track.map(p=> 
+        {this.props.db.replace.map(p=> 
       <Col span={8}>
         <Card style={{ width: '18rem' , marginTop:20, marginLeft:20  }}>
   <Card.Img variant="top" src={p.image} />
@@ -73,10 +75,8 @@ class Track extends React.Component{
       
 <Col span={8}>
   <br></br><br></br>
-      <Steps direction="vertical" current={1} >
-    <Step title="Ordered Accepted" description="Your order has been accepted" />
-    <Step title="Delivered" description="By Sunday." />
-  </Steps>
+      <h5>delivered On:</h5><br></br>
+      <p>{Date() }</p>
     </Col>
     <Col span={8}>
     <br></br>
@@ -89,11 +89,11 @@ class Track extends React.Component{
             variant="warning"
             onClick={() => this.setState({ modalShow: true })}
           >
-            <Link to='/track'>
-        Request Cancellation</Link>
+            <Link to='/replace'>
+        Request Replacement</Link>
           </Button>
   
-          <MyVerticallyCenteredModal
+          <ReplaceModal
             show={this.state.modalShow}
             onHide={modalClose}
           />
@@ -106,4 +106,4 @@ class Track extends React.Component{
   )
   
 }}
-export default Track;
+export default Replace;

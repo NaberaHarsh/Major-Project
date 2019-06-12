@@ -20,6 +20,11 @@ import Payment from './cart/payment'
 import Placed from './cart/placed'
 import Help from './footer/help'
 import Track from './profile/track'
+import Order from './profile/orders'
+import Return from './footer/return'
+import Replace from './footer/replace'
+
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // import { DatePicker } from 'antd';
@@ -56,6 +61,49 @@ class App extends React.Component{
           Price:"600",
           image:".././assets/necklace.jpg"
         }
+      ],
+
+      cart:[
+        {
+          name:"Necklace",
+          Price:"999/-",
+          image:".././assets/necklace.jpg"
+        },
+        {
+          name:"AD Earring",
+          Price:"799/-",
+          image:".././assets/earring.jpg"
+        }
+      ],
+      track:[
+        {
+          name:"AD Earring",
+          image:".././assets/earring.jpg"
+        }
+      ],
+      return:[
+        {
+          name:"AD Earring",
+          image:".././assets/earring.jpg"
+        }
+      ],
+      replace:[
+        {
+          name:"AD Earring",
+          image:".././assets/earring.jpg"
+        }
+      ],
+      order:[
+        {
+          name:"Necklace",
+          Price:"999/-",
+          image:".././assets/necklace.jpg"
+        },
+        {
+          name:"AD Earring",
+          Price:"799/-",
+          image:".././assets/earring.jpg"
+        }
       ]
   }
 }
@@ -79,14 +127,21 @@ class App extends React.Component{
       <Route path="/pendant/" component={Pendant} />
     <Route path="/earring/" render={()=> <Earring db={this.db} /> } />
       <Route path="/item1/" component={Item} />
-      <Route path="/cart/" component={Cart} />
+      <Route path="/cart/" render={()=> <Cart db={this.db} />} />
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
       <Route path="/address/" component={Address} />
       <Route path="/help/" component={Help} />  
       <Route path="/drawer/" component={Drawer1} />
-      <Route path="/track/" component={Track} />      
+      <Route path="/track/" render={()=> <Track db={this.db} />} /> 
+      <Route path="/order/" render={()=> <Order db={this.db} />} />  
+      <Route path="/return/" render={()=> <Return db={this.db} />} />  
+      <Route path="/replace/" render={()=> <Replace db={this.db} />} />  
+
+ 
+      
+    
             <Footer />
             
       </div>

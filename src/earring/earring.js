@@ -63,7 +63,7 @@ class Earring extends React.Component{
           src={p.image}
         />
       }
-      actions={[<Button variant="warning">Add To Cart</Button>]}
+      actions={[<Button variant="warning"><Link to='/cart'>Add To Cart</Link></Button>]}
     >
       <center>
           <Meta
