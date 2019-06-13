@@ -20,7 +20,7 @@ function Signup(){
     <Form.Label>Password</Form.Label>
     <Form.Control type="password" placeholder="Password" />
   </Form.Group>
-  <Button variant="primary" type="submit">
+  <Button variant="warning" type="submit">
   <a href="/" >Create New Account</a>
   </Button>
 </Form>

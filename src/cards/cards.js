@@ -19,13 +19,14 @@ class Cards extends React.Component{
   </Card.Body>
 </Card>
 
-
+<Link to='/earring/'>
 <Card style={{ width: '18rem' , marginTop:20 }}>
   <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
   <Card.Body style={{textAlign:"center"}}>
-    <Card.Title > <Link to='/earring/'>Earring</Link></Card.Title>
+    <Card.Title > Earring</Card.Title>
   </Card.Body>
 </Card>
+</Link>
 <Card style={{ width: '18rem' , marginTop:20 }}>
   <Card.Img variant="top" src="https://www.malabargoldanddiamonds.com/media/catalog/product/cache/5/image/800x800/0dc2d03fe217f8c83829496872af24a0/n/e/neanbva001.jpg" />
   <Card.Body style={{textAlign:"center"}}>

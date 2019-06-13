@@ -85,14 +85,14 @@ class Replace extends React.Component{
         <br></br><br></br>
         <br></br>
         <ButtonToolbar>
+        <Link to='/replace'>
           <Button
             variant="warning"
             onClick={() => this.setState({ modalShow: true })}
           >
-            <Link to='/replace'>
-        Request Replacement</Link>
+        Request Replacement
           </Button>
-  
+          </Link>
           <ReplaceModal
             show={this.state.modalShow}
             onHide={modalClose}

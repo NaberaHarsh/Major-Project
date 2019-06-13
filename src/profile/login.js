@@ -30,7 +30,7 @@ class Login extends React.Component{
   
 
   
-  <Button variant="primary" type="submit">
+  <Button variant="warning" type="submit">
     <a href='/'>Submit</a>
   </Button>
   

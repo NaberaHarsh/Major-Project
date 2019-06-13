@@ -83,13 +83,14 @@ class Return extends React.Component{
         <br></br><br></br>
         <br></br>
         <ButtonToolbar>
+        <Link to='/return'>
           <Button
             variant="warning"
             onClick={() => this.setState({ modalShow: true })}
-          >
-            <Link to='/return'>
-        Request Return</Link>
+          >  
+        Request Return
           </Button>
+          </Link>
   
           <ReturnModal
             show={this.state.modalShow}

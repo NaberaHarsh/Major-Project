@@ -99,10 +99,11 @@ return(
      
     </tbody>
   </Table> */}
-  
+   <Link to='/address/'>
     <Button variant="warning"> 
-    <Link to='/address/'>Proceed To Checkout</Link>
+   Proceed To Checkout
     </Button>
+    </Link>
     <br></br>
     <br></br>
   </div>

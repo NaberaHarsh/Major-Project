@@ -15,8 +15,10 @@ function Review(){
     <input type="file" name="Add Image"></input>
 </form>
 <br></br>
+<Link to='/item1/'>
 <Button variant="warning">
-    <Link to='/item1/'>Submit Review</Link></Button>
+    Submit Review</Button>
+    </Link>
 <br></br>
 <br></br>
         </div>

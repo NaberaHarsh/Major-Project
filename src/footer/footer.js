@@ -14,7 +14,7 @@ class Footer extends React.Component{
                         <h5><Link to='/help/'>Help and Support</Link></h5>
                         <h5><Link to='/return'>Return Product</Link></h5>
                         <h5><Link to='/replace'>Replacement</Link></h5>
-                        <h5>Find Store</h5>
+                        <h5><Link to='/store'>Find Store</Link></h5>
                     </div>
                     <div class="col-4"></div>
                     <div class="col-4" style={{ marginTop:20}}>

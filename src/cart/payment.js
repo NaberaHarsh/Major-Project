@@ -25,11 +25,11 @@ function Payment(){
     
           
   
-          
-      <Button variant="dark" type="submit">
-      <Link to='/placed'>Confirm Order</Link> 
-    
+      <Link to='/placed'>
+      <Button variant="warning" type="submit">
+      Confirm Order
       </Button>
+      </Link> 
       </Form>
             </div>
         )

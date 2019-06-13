@@ -3,7 +3,7 @@ import React from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button, NavDropdown, Dropdown } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'antd/dist/antd.css'
- import { Drawer} from 'antd';
+ import { Drawer, Icon} from 'antd';
 // import Login from './profile/login
 
 
@@ -68,8 +68,8 @@ class Navigation extends React.Component {
 
                             <li className="nav-item">
                                 <Button onClick={this.showDrawer} variant="outline-light">Profile</Button>
-                                <Drawer
-                                    title="Profile"
+                                <Drawer 
+                                    title='Profile' 
                                     placement="right"
                                     closable={false}
                                     onClose={this.onClose}

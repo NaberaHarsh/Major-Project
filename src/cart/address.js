@@ -40,10 +40,11 @@ class Address extends React.Component{
 <Form.Label>Use Saved Address</Form.Label><br></br>
 <br></br>
 
-  
+<Link to='/payment'>
   <Button variant="dark" type="submit">
-    <Link to='/payment'>Proceed To Pay</Link>
+    Proceed To Pay
   </Button>
+  </Link>
 </Form>
 
 

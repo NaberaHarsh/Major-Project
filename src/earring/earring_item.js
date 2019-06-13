@@ -24,13 +24,14 @@ class Item extends React.Component{
 <br></br>
 <br></br>
 <center>
+<Link to='/cart/'>
 <Button variant="dark">
-    <Link to='/cart/'>Add To Cart</Link></Button>
+    Add To Cart</Button></Link>
 <br></br>
 <br></br>
-
+<Link to='/review/'>
 <Button variant="warning">
-    <Link to='/review/'>Add Review</Link></Button>
+   Add Review</Button></Link>
 </center>
                     </div>
                     <div className="col-2" >

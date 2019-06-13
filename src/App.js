@@ -23,6 +23,7 @@ import Track from './profile/track'
 import Order from './profile/orders'
 import Return from './footer/return'
 import Replace from './footer/replace'
+import Store from './footer/store'
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -138,12 +139,12 @@ class App extends React.Component{
       <Route path="/order/" render={()=> <Order db={this.db} />} />  
       <Route path="/return/" render={()=> <Return db={this.db} />} />  
       <Route path="/replace/" render={()=> <Replace db={this.db} />} />  
-
+      <Route path="/store/" component={Store} />
  
       
-    
+    <footer>
             <Footer />
-            
+            </footer>
       </div>
       </Router>
     )   
