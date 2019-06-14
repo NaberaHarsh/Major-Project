@@ -69,12 +69,14 @@ class App extends React.Component{
         {
           name:"Necklace",
           Price:"999/-",
-          image:".././assets/necklace.jpg"
+          image:".././assets/necklace.jpg",
+          quantity:"1"
         },
         {
           name:"AD Earring",
           Price:"799/-",
-          image:".././assets/earring.jpg"
+          image:".././assets/earring.jpg",
+          quantity:"2"
         }
       ],
       track:[
@@ -106,9 +108,28 @@ class App extends React.Component{
           Price:"799/-",
           image:".././assets/earring.jpg"
         }
+      ],
+      add:[
+        {
+          name:"Harsh Nabera",
+          house_no:"68/145",
+          street:"pratap nagar",
+          city:"jaipur",
+          state:"Raj",
+          pincode:"302033"
+        },
+        {
+          name:"Mojo Jojo",
+          house_no:"40/33",
+          street:"villan street",
+          city:"Townsville",
+          state:"xyz",
+          pincode:"505050"
+        }
       ]
   }
 }
+
 
   render(){
     return(
@@ -133,7 +154,7 @@ class App extends React.Component{
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
-      <Route path="/address/" component={Address} />
+      <Route path="/address/" render={()=> <Address db={this.db} />} />
       <Route path="/help/" component={Help} />  
       <Route path="/drawer/" component={Drawer1} />
       <Route path="/track/" render={()=> <Track db={this.db} />} /> 

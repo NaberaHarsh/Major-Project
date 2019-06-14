@@ -1,7 +1,8 @@
 import React from 'react'
-import {Form, Button, Card } from 'react-bootstrap'
+import {Form, Button, Card, CardDeck } from 'react-bootstrap'
 import RadioGroup from 'antd/lib/radio/group';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Col, Row } from 'antd';
 
 class Address extends React.Component{
 
@@ -29,7 +30,7 @@ if(e.target.value=='saved'){
         return(
             <div style={{textAlign:"center", fontSize:18}}>
             <center>
-            <Card style={{width: "35rem"}}>
+            <Card style={{width: "45rem"}}>
                     <Card.Title>Shipping Address</Card.Title>
                     <br></br>
                     <br></br>
@@ -63,7 +64,18 @@ style={this.state.visible}
   </Form>
   <input type="radio" name="add" onChange={(e)=> this.Change(e)} value="saved" />
                     <Form.Label>Use Saved Address</Form.Label>
-                    <h4 style={this.state.saved_visible}>This is sample address</h4>
+                    <Row>
+                    <div style={this.state.saved_visible}>
+                    {this.props.db.add.map(p=> <Col span={8}>
+                    <Card style={{width:"15rem"}}>
+                    <Card.Title>{p.name}</Card.Title>
+                    <Card.Body>{p.house_no},{p.street}<br></br>{p.city},{p.state}<br></br>{p.pincode}</Card.Body>
+
+                    </Card>
+                    </Col>              
+                      )}
+                      </div>
+                      </Row>
   <br></br>
 
 <br></br>

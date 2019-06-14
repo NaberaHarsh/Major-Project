@@ -8,9 +8,7 @@ class Cart extends React.Component{
 
   
   render(){
-if(this.props.db.cart==null)
-  return(<h1>cart is empty</h1>)
-  else{
+
 return(
   <div  style={{textAlign:"center"}}>
     <Table>
@@ -110,6 +108,6 @@ return(
 )
 }
 
-}
+
 }
 export default Cart;
