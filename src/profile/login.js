@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button,Card} from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Signup from './signup'
 import NavLink from 'react-bootstrap/NavLink';
@@ -9,7 +9,11 @@ class Login extends React.Component{
     render(){
         return (
           
-            <div>
+            <div style={{textAlign:"center", fontSize:18}}>
+              <center>
+              <Card style={{width: "20rem"}}>
+                <Card.Title>Login</Card.Title>
+                <br></br>
                 <Form>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
@@ -38,6 +42,8 @@ class Login extends React.Component{
 </Form>
 <br></br>
 <br></br>
+</Card>
+</center><br></br>
             </div>
             
         )

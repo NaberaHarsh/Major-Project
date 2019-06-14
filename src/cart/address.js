@@ -1,20 +1,46 @@
 import React from 'react'
-import {Form, Button } from 'react-bootstrap'
+import {Form, Button, Card } from 'react-bootstrap'
 import RadioGroup from 'antd/lib/radio/group';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Address extends React.Component{
 
+  constructor(props){
+  super(props)
+
+  this.state = { visible: {display : 'none'}, saved_visible: {display : 'none'}};
+  }
+  
+Change(e){
+if(e.target.value=='new'){
+  this.setState({visible:{display:'block'}})
+  this.setState({saved_visible:{display:'none'}})
+}
+if(e.target.value=='saved'){
+  this.setState({saved_visible:{display:'block'}})
+  this.setState({visible:{display:'none'}})
+}
+
+}
+   
+
+
     render(){
         return(
-            <div>
+            <div style={{textAlign:"center", fontSize:18}}>
+            <center>
+            <Card style={{width: "35rem"}}>
+                    <Card.Title>Shipping Address</Card.Title>
+                    <br></br>
+                    <br></br>
+                    <input type="radio" onChange={(e)=> this.Change(e)} name="add" value="new" />
+                    <label >Enter New Address</label>                   
+                    
 
+<Form
+style={this.state.visible}
+>
     
-
-<Form>
-    
-<input type="radio" id="add" value="new" />
-<Form.Label>Enter New Address</Form.Label><br></br>
     <Form.Label>Name</Form.Label>
   <Form.Control type="Text" placeholder="Enter Name" />
   <Form.Label>House NO.</Form.Label>
@@ -34,21 +60,28 @@ class Address extends React.Component{
   <Form.Control type="Text" placeholder="Enter Phone Number" />
     
   </Form.Group>
+  </Form>
+  <input type="radio" name="add" onChange={(e)=> this.Change(e)} value="saved" />
+                    <Form.Label>Use Saved Address</Form.Label>
+                    <h4 style={this.state.saved_visible}>This is sample address</h4>
   <br></br>
 
-  <input type="radio" id="add" value="new" />
-<Form.Label>Use Saved Address</Form.Label><br></br>
+<br></br>
 <br></br>
 
+
 <Link to='/payment'>
-  <Button variant="dark" type="submit">
+  <Button variant="warning" type="submit">
     Proceed To Pay
   </Button>
   </Link>
-</Form>
 
 
-    
+<br></br>
+</Card>
+</center>   
+<br></br>
+
             </div>
         )
     }

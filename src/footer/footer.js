@@ -9,15 +9,17 @@ class Footer extends React.Component{
         return(
             <div id="dd">
                 <div class="row">
-                    <div class="col-4" style={{textAlign:"center", marginTop:20}}>
-                        <h3>Customer service</h3>
-                        <h5><Link to='/help/'>Help and Support</Link></h5>
-                        <h5><Link to='/return'>Return Product</Link></h5>
-                        <h5><Link to='/replace'>Replacement</Link></h5>
-                        <h5><Link to='/store'>Find Store</Link></h5>
+                    <div class="col-4" style={{ marginTop:20}}>
+                        <h3 style={{textAlign:"center"}}>Customer service</h3>
+                        <ul type="none" style={{fontSize:15, paddingLeft:145}}>
+                        <li><Link to='/help/'>Help and Support</Link></li>
+                        <li><Link to='/return'>Return Product</Link></li>
+                        <li><Link to='/replace'>Replacement</Link></li>
+                        <li><Link to='/store'>Find Store</Link></li>
+                        </ul>
                     </div>
                     <div class="col-4"></div>
-                    <div class="col-4" style={{ marginTop:20}}>
+                    <div class="col-4" style={{ marginTop:25}}>
                         <h4>Subscribe to recieve exclusive Offers</h4>
                         <form>
                             <input type="email" placeholder="E-mail ID" style={{marginLeft:50}}></input>

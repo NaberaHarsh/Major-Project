@@ -24,6 +24,7 @@ import Order from './profile/orders'
 import Return from './footer/return'
 import Replace from './footer/replace'
 import Store from './footer/store'
+import Function from './functions/functions'
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
