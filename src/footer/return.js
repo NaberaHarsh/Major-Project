@@ -51,9 +51,9 @@ class ReturnModal extends React.Component {
             </form>
         </Modal.Body>
         <Modal.Footer>
-          
+          <Link to='/return_res'>
           <Button onClick={this.props.onHide} variant="warning">Return Product</Button>
-          
+          </Link>
         </Modal.Footer>
       </Modal>
     );

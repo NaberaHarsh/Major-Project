@@ -23,6 +23,7 @@ class ReplaceModal extends React.Component {
     }
   }
     
+  
   render() {
     
     return (
@@ -54,8 +55,9 @@ class ReplaceModal extends React.Component {
             </form>
         </Modal.Body>
         <Modal.Footer>
-          
+          <Link to='/replace_res'>
           <Button onClick={this.props.onHide} variant="warning">Replace Product</Button>
+          </Link>
           
         </Modal.Footer>
       </Modal>
@@ -108,6 +110,7 @@ class Replace extends React.Component{
             onClick={() => this.setState({ modalShow: true })}
           >
         Request Replacement
+        
           </Button>
           </Link>
           <ReplaceModal

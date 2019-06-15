@@ -5,9 +5,38 @@ import {Card} from 'antd'
 import 'antd/dist/antd.css';
 import {Row, Icon, Col, Avatar } from 'antd';
 import { Button } from 'react-bootstrap';
+import { configConsumerProps } from 'antd/lib/config-provider';
 const { Meta } = Card;
 
 class Earring extends React.Component{
+  constructor(props){
+    super(props)
+  
+    this.state = { price_visible: {display : 'none'}, type_visible: {display : 'none'}, ocassion_visible: {display : 'none'}};
+    }
+
+do(e){
+  
+  if(e.target.value=='price'){
+    this.setState({price_visible:{display:'block'}})
+    this.setState({type_visible:{display:'none'}})
+    this.setState({ocassion_visible:{display:'none'}})
+  }
+  if(e.target.value=='type'){
+    this.setState({price_visible:{display:'none'}})
+  this.setState({type_visible:{display:'block'}})
+  this.setState({ocassion_visible:{display:'none'}})
+  }
+  if(e.target.value=='ocassion'){
+    this.setState({price_visible:{display:'none'}})
+  this.setState({type_visible:{display:'none'}})
+  this.setState({ocassion_visible:{display:'block'}})
+  }
+}
+
+
+
+ 
 
   render(){
 
@@ -17,20 +46,49 @@ class Earring extends React.Component{
             <div>
                 <Row>
                     <Col span={6}>
-                        <h3>Apply Filters</h3>
+                        <h3 style={{textAlign:"center"}}>Apply Filters</h3>
                         <br></br>
                         <ul type="none">
-                            <li>Price</li>
+                            <li><Button onClick={(e)=>this.do(e)} value='price' variant="outline-dark" style={{width:250}}>Price</Button>
+                            <form
+                            style={this.state.price_visible}>
+                              <br></br>
+      <input type="radio" name="price" /><label>below 500</label><br></br>
+      <input type="radio" name="price" /><label>500 - 1500</label><br></br>
+      <input type="radio" name="price" /><label>1500 - 2500</label><br></br>
+      <input type="radio" name="price" /><label>2500 - 5000</label><br></br>
+      <input type="radio" name="price" /><label>above 5000</label><br></br>
+      </form>
+                              </li>
                             <br></br>
-                            <li>Jewellery Type</li>
+                            <li>  <Button onClick={(e)=>this.do(e)} value='type' variant="outline-dark" style={{width:250}}>Jewellery type</Button>
+                            <form
+                             style={this.state.type_visible}
+                            >
+                             <br></br>
+      <input type="checkbox" name="type" /><label>American Diamond</label><br></br>
+      <input type="checkbox" name="type" /><label>Victorian Jewellery</label><br></br>
+      <input type="checkbox" name="type" /><label>Antique metal</label><br></br>
+      </form>
+  </li>
                             <br></br>
-                            <li>Ocassion</li>
+                            <li> <Button onClick={(e)=>this.do(e)} value='ocassion' variant="outline-dark" style={{width:250}}>Ocassion</Button>
+                            <form
+                             style={this.state.ocassion_visible}
+                          >
+                            <br></br>
+      <input type="checkbox" name="ocassion" /><label>Wedding Jewellery</label><br></br>
+      <input type="checkbox" name="ocassion" /><label>Diwali Special</label><br></br>
+      <input type="checkbox" name="ocassion" /><label>Navratra Special</label><br></br>
+      </form>
+    
+                            </li>
                         </ul>
                         </Col>
                     
                     <Col span={18}>
                     <h3 style={{textAlign:"right", paddingRight:100}}>Sort</h3>
-                        <Nav className="justify-content-end" activeKey="/home">
+                        <Nav className="justify-content-end" activeKey="/home" >
     <Nav.Item>
       <Nav.Link>Best Seller</Nav.Link>
     </Nav.Item>
@@ -76,105 +134,7 @@ class Earring extends React.Component{
     </Col>)}
       </Row>
         </Link>
-                        
-                        {/* <CardDeck>
-                        <Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    <Link to='/item1'>AD Earring</Link> </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-<Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-<Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-</CardDeck>
-<CardDeck>
-                        <Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-<Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-<Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-</CardDeck>
-<CardDeck>
-                        <Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-<Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-<Card style={{ width: '18rem',  marginTop:20 , marginLeft:20} }>
-                <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" />
-  <Card.Body style={{textAlign:"center"}}>
-    <Card.Title>
-    AD Earring </Card.Title>
-    <Card.Text>
-      Rs 799/- only
-    </Card.Text>
-  </Card.Body>
-</Card>
-</CardDeck> */}
-
-                    
+                                           
                     </Col>
                     <br></br>
                     </Row>

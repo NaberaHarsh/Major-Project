@@ -34,8 +34,8 @@ if(e.target.value=='saved'){
                     <Card.Title>Shipping Address</Card.Title>
                     <br></br>
                     <br></br>
-                    <input type="radio" onChange={(e)=> this.Change(e)} name="add" value="new" />
-                    <label >Enter New Address</label>                   
+                    <input type="radio" onChange={(e)=> this.Change(e)} name="add" value="new" /><label >Enter New Address</label> 
+                                      
                     
 
 <Form
@@ -62,8 +62,8 @@ style={this.state.visible}
     
   </Form.Group>
   </Form>
-  <input type="radio" name="add" onChange={(e)=> this.Change(e)} value="saved" />
-                    <Form.Label>Use Saved Address</Form.Label>
+  <input type="radio" name="add" onChange={(e)=> this.Change(e)} value="saved" /><label>Use Saved Address</label>
+                    
                     <Row>
                     <div style={this.state.saved_visible}>
                     {this.props.db.add.map(p=> <Col span={8}>

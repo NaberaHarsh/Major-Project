@@ -24,6 +24,11 @@ import Order from './profile/orders'
 import Return from './footer/return'
 import Replace from './footer/replace'
 import Store from './footer/store'
+import Replace_res from './footer/replace_res'
+import Return_res from './footer/return_res'
+import Cancel_res from './profile/cancel_res'
+
+
 import Function from './functions/functions'
 
 
@@ -125,6 +130,14 @@ class App extends React.Component{
           city:"Townsville",
           state:"xyz",
           pincode:"505050"
+        },
+        {
+          name:"Ruby",
+          house_no:"77/33",
+          street:"malviya nagar",
+          city:"jaipur",
+          state:"Raj",
+          pincode:"302030"
         }
       ]
   }
@@ -162,8 +175,11 @@ class App extends React.Component{
       <Route path="/return/" render={()=> <Return db={this.db} />} />  
       <Route path="/replace/" render={()=> <Replace db={this.db} />} />  
       <Route path="/store/" component={Store} />
- 
-      
+      <Route path="/replace_res/" component={Replace_res} />
+      <Route path="/return_res/" component={Return_res} />
+      <Route path="/cancel_res/" component={Cancel_res} />
+
+
     <footer>
             <Footer />
             </footer>
