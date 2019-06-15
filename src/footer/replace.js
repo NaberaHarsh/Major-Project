@@ -8,6 +8,21 @@ import {Modal, Button, ButtonToolbar } from 'react-bootstrap'
 const { Step } = Steps;
 
 class ReplaceModal extends React.Component {
+  constructor(props){
+  super(props)
+
+  this.state = { visible: {display : 'none'}};
+  }
+
+  Change(e){
+    if(e.target.value=="other"){
+      this.setState({visible:{display:'block'}})
+    }
+    if(e.target.value=='list'){
+      this.setState({visible:{display:'none'}})
+    }
+  }
+    
   render() {
     
     return (
@@ -26,15 +41,16 @@ class ReplaceModal extends React.Component {
         <Modal.Body>
           <form>
             <label>why do you want to replace ?</label>
-            <select>
-              <option>different color then i ordered</option>
-              <option>this us not what i ordered</option>
+            <select 
+            onChange={(e)=> this.Change(e)}>
+              <option  value="list">different color then i ordered</option>
+              <option  value="list">this us not what i ordered</option>
               
-              <option>product is damaged</option>
+              <option  value="list">product is damaged</option>
 
-              <option value="other">other</option>
+              <option  value="other" >other</option>
             </select><br></br>
-            <textarea name="reason" cols="70"></textarea>
+            <textarea cols="70" style={this.state.visible} placeholder="type something"></textarea>
             </form>
         </Modal.Body>
         <Modal.Footer>
@@ -52,9 +68,10 @@ class ReplaceModal extends React.Component {
 class Replace extends React.Component{
   constructor(...args) {
     super(...args);
-
+      
     this.state = { modalShow: false };
   }
+  
 
   render(){
     let modalClose = () => this.setState({ modalShow: false });

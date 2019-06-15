@@ -8,7 +8,7 @@ function Review(){
     return(
         <div style={{textAlign:"center"}}>
 <form>
-    <label>Name of person</label>
+    <label>Name of person   </label>
     <input type="text" placeholder="add review here"></input>
     <br></br>
     <label>Add Image</label>
