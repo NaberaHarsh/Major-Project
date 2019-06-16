@@ -20,7 +20,7 @@ class Cards extends React.Component{
 </Card>
 
 <Link to='/earring/'>
-<Card style={{ width: '18rem' , marginTop:20 }}>
+<Card style={{ width: '16rem' , marginTop:20 }}>
   <Card.Img variant="top" src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" style={{height:250}}/>
   <Card.Body style={{textAlign:"center"}}>
     <Card.Title > Earring</Card.Title>
