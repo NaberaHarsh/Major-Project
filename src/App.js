@@ -27,6 +27,8 @@ import Store from './footer/store'
 import Replace_res from './footer/replace_res'
 import Return_res from './footer/return_res'
 import Cancel_res from './profile/cancel_res'
+import axios from 'axios';
+
 
 
 import Function from './functions/functions'
@@ -43,6 +45,8 @@ import Product from './product'
 class App extends React.Component{
   constructor(props){
     super(props);
+    this.state={};
+    this.state.item=[];
 
     
     this.db={
@@ -142,6 +146,16 @@ class App extends React.Component{
       ]
   }
 }
+
+componentDidMount() {
+  axios.get('http://localhost:8080/read')
+    .then((res) => {
+      let db = this.state.db;
+    db.products = res.data;
+      this.setState({
+         db:db
+      })
+    })}
 
 
   render(){
