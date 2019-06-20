@@ -46,48 +46,47 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state={};
-    this.state.item=[];
-
-    
-    this.db={
+    this.state.ordered={}
+        
+    this.state.db={
       
-      products:[
-        {
-          name:"AD earring",
-          Price:"Rs. 799",
-          image:".././assets/earring.jpg"
-        },
-        {
-          name:"AD earring",
-          Price:"Rs. 899",
-          image:".././assets/earring.jpg"
-        },
-        {
-          name:"AD Earring",
-          Price:"200",
-          image:".././assets/earring.jpg"
-        },
-        {
-          name:"AD Earring",
-          Price:"600",
-          image:".././assets/necklace.jpg"
-        }
-      ],
+      products : [],
+        // {
+        //   name:"AD earring",
+        //   Price:"Rs. 799",
+        //   image:".././assets/earring.jpg"
+        // },
+        // {
+        //   name:"AD earring",
+        //   Price:"Rs. 899",
+        //   image:".././assets/earring.jpg"
+        // },
+        // {
+        //   name:"AD Earring",
+        //   Price:"200",
+        //   image:".././assets/earring.jpg"
+        // },
+        // {
+        //   name:"AD Earring",
+        //   Price:"600",
+        //   image:".././assets/necklace.jpg"
+        // }
+      
 
-      cart:[
-        {
-          name:"Necklace",
-          Price:"999/-",
-          image:".././assets/necklace.jpg",
-          quantity:"1"
-        },
-        {
-          name:"AD Earring",
-          Price:"799/-",
-          image:".././assets/earring.jpg",
-          quantity:"2"
-        }
-      ],
+      cart:[],
+        // {
+        //   name:"Necklace",
+        //   Price:"999/-",
+        //   image:".././assets/necklace.jpg",
+        //   quantity:"1"
+        // },
+        // {
+        //   name:"AD Earring",
+        //   Price:"799/-",
+        //   image:".././assets/earring.jpg",
+        //   quantity:"2"
+        // }
+    
       track:[
         {
           name:"AD Earring",
@@ -106,18 +105,18 @@ class App extends React.Component{
           image:".././assets/earring.jpg"
         }
       ],
-      order:[
-        {
-          name:"Necklace",
-          Price:"999/-",
-          image:".././assets/necklace.jpg"
-        },
-        {
-          name:"AD Earring",
-          Price:"799/-",
-          image:".././assets/earring.jpg"
-        }
-      ],
+      order:[],
+      //   {
+      //     name:"Necklace",
+      //     Price:"999/-",
+      //     image:".././assets/necklace.jpg"
+      //   },
+      //   {
+      //     name:"AD Earring",
+      //     Price:"799/-",
+      //     image:".././assets/earring.jpg"
+      //   }
+
       add:[
         {
           name:"Harsh Nabera",
@@ -147,16 +146,52 @@ class App extends React.Component{
   }
 }
 
-componentDidMount() {
-  axios.get('http://localhost:8080/read')
-    .then((res) => {
-      let db = this.state.db;
-    db.products = res.data;
-      this.setState({
-         db:db
-      })
-    })}
+componentDidMount(){
+  axios.get('http://localhost:8080/earring')
+  .then((res)=>{
+    console.log(res)
+  let db = this.state.db;
+  db.products = res.data;
+    this.setState({
+       db:db
+    })
+  })
+}
 
+addProductToCart(item){
+  let db = this.state.db;
+  item.quantity = 1;
+  db.cart.push(item);
+  this.setState(
+    {db:db}
+  )
+  this.state.ordered=db.cart;
+  console.log(this.state.ordered);
+  console.log(db);
+
+ }
+
+ 
+ changeQuantity(item,e){
+
+  let db = this.state.db;
+  let i = db.cart.indexOf(item)
+   db.cart[i].quantity = parseInt(e.target.value); 
+  this.setState(
+    {db:db}
+  )
+  
+  console.log(db);
+}
+
+addProductToOrder(item){
+
+  let db=this.state.db;
+  db.order.push(item)
+  this.setState({
+    db:db
+  })
+}
 
   render(){
     return(
@@ -175,19 +210,19 @@ componentDidMount() {
       <Route path="/login/" exact component={Login} />
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
-    <Route path="/earring/" render={()=> <Earring db={this.db} /> } />
+    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/> } />
       <Route path="/item1/" component={Item} />
-      <Route path="/cart/" render={()=> <Cart db={this.db} />} />
+      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)} addOrder={this.addProductToOrder.bind(this)}/>} />
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
-      <Route path="/address/" render={()=> <Address db={this.db} />} />
+      <Route path="/address/" render={()=> <Address db={this.state.db} />} />
       <Route path="/help/" component={Help} />  
       <Route path="/drawer/" component={Drawer1} />
-      <Route path="/track/" render={()=> <Track db={this.db} />} /> 
-      <Route path="/order/" render={()=> <Order db={this.db} />} />  
-      <Route path="/return/" render={()=> <Return db={this.db} />} />  
-      <Route path="/replace/" render={()=> <Replace db={this.db} />} />  
+      <Route path="/track/" render={()=> <Track db={this.state.db} />} /> 
+      <Route path="/order/" render={()=> <Order db={this.state.db} />} />  
+      <Route path="/return/" render={()=> <Return db={this.state.db} />} />  
+      <Route path="/replace/" render={()=> <Replace db={this.state.db} />} />  
       <Route path="/store/" component={Store} />
       <Route path="/replace_res/" component={Replace_res} />
       <Route path="/return_res/" component={Return_res} />

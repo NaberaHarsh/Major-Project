@@ -2,9 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'react-bootstrap'
 
-class Order extends React.Component{
-
-    render(){
+function Order({db}){
   
   return(
     <div  style={{textAlign:"center"}}>
@@ -17,16 +15,16 @@ class Order extends React.Component{
               <th>Status</th>
               </tr>
               </thead>
-      {this.props.db.order.map(p=>
+      {db.order.map(item=>
         
   
               <tr>
           
           <td>
-            <Link to='/item1/'><img src={p.image} id="hh"></img></Link>
+            <Link to='/item1/'><img src={item.image} id="hh"></img></Link>
             </td>
-          <td>{p.name}</td>
-          <td style={{color:"darkred"}}>{p.Price}</td>
+          <td>{item.name}</td>
+          <td style={{color:"darkred"}}>{item.price}</td>
           <td>Delivered</td>
           
         </tr>
@@ -35,6 +33,6 @@ class Order extends React.Component{
          </Table> 
          </div>
          )
-         }}
+         }
         
         export default Order;

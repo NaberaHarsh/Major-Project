@@ -2,112 +2,102 @@ import React from'react'
 import './cart.css'
 import { Table, columns, Button} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {List, Avatar} from 'antd'
 
 
-class Cart extends React.Component{
+
+// class Cart extends React.Component{
 
   
-  render(){
+//   render(){
 
-return(
-  <div  style={{textAlign:"center"}}>
-    <Table>
-        <thead>
-          <tr>
-            <th>Shopping cart</th>
-            <th></th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th></th>
-            </tr>
-            </thead>
-    {this.props.db.cart.map(p=>
+// return(
+//   <div  style={{textAlign:"center"}}>
+//     <Table>
+//         <thead>
+//           <tr>
+//             <th>Shopping cart</th>
+//             <th></th>
+//             <th>Price</th>
+//             <th>Quantity</th>
+//             <th></th>
+//             </tr>
+//             </thead>
+//     {this.props.db.cart.map(p=>
       
 
-            <tr>
+//             <tr>
         
-        <td>
-          <Link to='/item1/'><img src={p.image} id="hh"></img></Link>
-          </td>
-        <td>{p.name}</td>
-        <td style={{color:"darkred"}}>{p.Price}</td>
-        <td><form>
-          <select>
+//         <td>
+//           <Link to='/item1/'><img src={p.image} id="hh"></img></Link>
+//           </td>
+//         <td>{p.name}</td>
+//         <td style={{color:"darkred"}}>{p.Price}</td>
+//         <td><form>
+//           <select>
             
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option></select></form></td>
-        <td><Button variant="warning">Remove Item</Button></td>
+//           <option>1</option>
+//           <option>2</option>
+//           <option>3</option>
+//           <option>4</option>
+//           <option>5</option></select></form></td>
+//         <td><Button variant="warning">Remove Item</Button></td>
         
-      </tr>
+//       </tr>
             
-       )}
-       </Table> 
-    {/* <Table responsive="sm">
-    <thead>
-      <tr>
-        <th>Shopping Cart</th>
-        
-        <th></th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th></th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        
-        <td>
-          <Link to='/item1/'><img src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" id="hh"></img></Link>
-          </td>
-        <td>sample Description</td>
-        <td style={{color:"darkred"}}>Rs. 799/-</td>
-        <td><form>
-          <select>
-            
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option></select></form></td>
-        <td><Button variant="warning">Remove Item</Button></td>
-        
-      </tr>
-      <tr>
-        
-        <td>
-        <Link to='/item1/'><img src=".././assets/earring.jpg" id="hh"></img></Link>
-        </td>
-        <td>sample Description</td>
-        <td style={{color:"darkred"}}>Rs. 599/-</td>
-        <td><form>
-          <select>
-            
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option></select></form></td>
-        <td><Button variant="warning">Remove Item</Button></td>
-        
-      </tr>
-     
-    </tbody>
-  </Table> */}
-   <Link to='/address/'>
-    <Button variant="warning"> 
-   Proceed To Checkout
-    </Button>
-    </Link>
+//        )}
+//        </Table> 
+function Cart({db,changeQuantity}){
+
+  return (
+    <div  style={{textAlign:"center"}}>
+        <Table>
+            <thead>
+              <tr>
+                <th>Shopping cart</th>
+                <th></th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+                 </tr>
+                </thead>
+
+                {db.cart.map(item=>
+      
+
+                  <tr>
+              
+              <td>
+                <Link to='/item1/'><img src={item.image} id="hh"></img></Link>
+                </td>
+              <td>{item.name}</td>
+              <td style={{color:"darkred"}}>{item.price}</td>
+              <td><form>
+                <select onChange={(e)=>{changeQuantity(item,e)}}>
+                  
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option></select></form></td>
+              <td><Button variant="warning">Remove Item</Button></td>
+              
+            </tr>
+                  
+             )}
+             </Table> 
+      
+     <h2 >Total : {db.cart.reduce((sum,item)=>sum+item.price*item.quantity,0)}</h2>
     <br></br>
-    <br></br>
-  </div>
-)
+     <Link to='/address/'>
+     <Button variant="warning"> 
+    Proceed To Checkout
+     </Button>
+     </Link>
+     <br></br>
+     <br></br>
+     </div>
+  )
 }
 
-
-}
 export default Cart;

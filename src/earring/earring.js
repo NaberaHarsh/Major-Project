@@ -122,12 +122,13 @@ do(e){
           src={p.image}
         />
       }
-      actions={[<Button variant="warning"><Link to='/cart'>Add To Cart</Link></Button>]}
-    >
+      actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p); this.props.addOrder(p)}}>Add To Cart</Button></Link>]}
+      
+      >
       <center>
           <Meta
         title={p.name}
-        description={p.Price}
+        description={p.price}
       />
       
       </center>
