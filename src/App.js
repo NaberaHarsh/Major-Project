@@ -28,6 +28,9 @@ import Replace_res from './footer/replace_res'
 import Return_res from './footer/return_res'
 import Cancel_res from './profile/cancel_res'
 import axios from 'axios';
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
 
 
 
@@ -39,6 +42,18 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import { DatePicker } from 'antd';
 import Product from './product'
 
+
+var firebaseConfig = {
+  apiKey: "AIzaSyDQpeO9E35la_b5xMt4aE0f2EuqcQU7UzM",
+  authDomain: "mahek-jewellery.firebaseapp.com",
+  databaseURL: "https://mahek-jewellery.firebaseio.com",
+  projectId: "mahek-jewellery",
+  storageBucket: "mahek-jewellery.appspot.com",
+  messagingSenderId: "399646365092",
+  appId: "1:399646365092:web:c8b30e47f5047315"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 
 
@@ -146,6 +161,36 @@ class App extends React.Component{
   }
 }
 
+googleLogin(){
+  var provider = new firebase.auth.GoogleAuthProvider();
+
+
+  firebase.auth().signInWithPopup(provider).then(function(result,history) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    console.log(user);
+    console.log(user.displayName,user.email)
+    history.push("/");
+
+    // ...
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
+  
+}
+
+
+
+
 componentDidMount(){
   axios.get('http://localhost:8080/earring')
   .then((res)=>{
@@ -158,7 +203,14 @@ componentDidMount(){
   })
 }
 
+
+
 addProductToCart(item){
+  let obj={id:item.id, name:item.name, price:item.price, image:item.image}
+  axios.post('http://localhost:8080/showcart',obj)
+  .then((res)=>{
+    console.log(res)
+  })
   let db = this.state.db;
   item.quantity = 1;
   db.cart.push(item);
@@ -207,7 +259,7 @@ addProductToOrder(item){
       
       
 
-      <Route path="/login/" exact component={Login} />
+      <Route path="/login/" exact render={()=> <Login googleLogin={this.googleLogin.bind(this)} />} />
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
     <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/> } />
@@ -232,6 +284,8 @@ addProductToOrder(item){
     <footer>
             <Footer />
             </footer>
+            {/* <button onClick={()=> this.googleLogin()}>login</button> */}
+
       </div>
       </Router>
     )   

@@ -5,12 +5,32 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'antd/dist/antd.css'
  import { Drawer, Icon} from 'antd';
 // import Login from './profile/login
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 
 
 
 class Navigation extends React.Component {
     state = { visible: false };
+
+    checkLogin(){
+        firebase.auth().onAuthStateChanged(function(user) {
+       if (user) {
+         console.log(user.displayName)
+       } else {
+         console.log( "No user is signed in.")
+       }
+     });
+     }
+
+    logout(){
+        firebase.auth().signOut().then(function() {
+        console.log(" Sign-out successful.")
+        }).catch(function(error) {
+        // An error happened.
+        });
+      }
 
     showDrawer = () => {
         this.setState({
@@ -76,10 +96,10 @@ class Navigation extends React.Component {
                                     visible={this.state.visible}
                                 >
                                     <p>
-                                    <Link to='/login' on onClick={this.onClose}>Login </Link></p>
+                                    <Link to='/login' on onClick={()=> {this.onClose(); this.checkLogin()}}>Login </Link></p>
                                     <p><Link to='/order' on onClick={this.onClose}>My Order</Link></p>
                                     <p><Link to='/track/' on onClick={this.onClose} >Track Order</Link></p>
-                                    <p><a href="/">Sign Out</a></p>
+                                    <p><a href="/" onClick={this.logout}>Sign Out</a></p>
                                 </Drawer>
                             </li>
                             {/* <li className="nav-item dropdown" >
