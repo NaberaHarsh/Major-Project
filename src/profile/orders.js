@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'react-bootstrap'
 
-function Order({db}){
+function Order({db}){ 
   
   return(
     <div  style={{textAlign:"center"}}>
@@ -10,9 +10,9 @@ function Order({db}){
           <thead>
             <tr>
               <th></th>
-              <th></th>
-              <th>Price</th>
-              <th>Status</th>
+              <th>Order ID</th>
+              <th>Name</th>
+              <th>Delivered To</th>
               </tr>
               </thead>
       {db.order.map(item=>

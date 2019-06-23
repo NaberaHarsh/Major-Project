@@ -89,32 +89,8 @@ class App extends React.Component{
       ],
       order:[],
 
-      add:[
-        {
-          name:"Harsh Nabera",
-          house_no:"68/145",
-          street:"pratap nagar",
-          city:"jaipur",
-          state:"Raj",
-          pincode:"302033"
-        },
-        {
-          name:"Mojo Jojo",
-          house_no:"40/33",
-          street:"villan street",
-          city:"Townsville",
-          state:"xyz",
-          pincode:"505050"
-        },
-        {
-          name:"Ruby",
-          house_no:"77/33",
-          street:"malviya nagar",
-          city:"jaipur",
-          state:"Raj",
-          pincode:"302030"
-        }
-      ]
+      address:[],
+        
   }
 }
 
@@ -168,6 +144,16 @@ componentDidMount(){
       db:db
     })
   })
+
+  axios.get('http://localhost:8080/getAddress')
+  .then((res)=>{
+    console.log(res)
+    let db=this.state.db;
+    db.address=res.data;
+    this.setState({
+      db:db
+    })
+  })
 }
 
 
@@ -188,20 +174,33 @@ console.log(item)
   this.state.ordered=db.cart;
   console.log(this.state.ordered);
   console.log(db);
-
  }
+
+ addProductToOrder(item){
+  console.log(item)
+  
+    let obj={cartinfo:this.state.db.cart, address:this.state.db.address}
+    axios.post('http://localhost:8080/showorder',obj)
+    .then((res)=>{
+      console.log(res)
+    })
+    // let db = this.state.db;
+    // item.quantity = 1;
+    // db.cart.push(item);
+    // this.setState(
+    //   {db:db}
+    // )
+   }
 
  deleteFromCart(i){
   let x = this.state.db.cart;
 console.log(i);
 console.log(x[i]);
 
-
   axios.delete('http://localhost:8080/deleteCartItem/' + x[i]._id)
     .then((res) => {
       console.log(res.data);
     })
-
   x.splice(i, 1);
   this.setState({
     db: x
@@ -210,25 +209,15 @@ console.log(x[i]);
 
  
  changeQuantity(item,e){
-
   let db = this.state.db;
   let i = db.cart.indexOf(item)
    db.cart[i].quantity = parseInt(e.target.value); 
   this.setState(
     {db:db}
   )
-  
   console.log(db);
 }
 
-addProductToOrder(item){
-
-  let db=this.state.db;
-  db.order.push(item)
-  this.setState({
-    db:db
-  })
-}
 
   render(){
     return(
@@ -249,11 +238,11 @@ addProductToOrder(item){
       <Route path="/pendant/" component={Pendant} />
     <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/> } />
       <Route path="/item1/" component={Item} />
-      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)} addOrder={this.addProductToOrder.bind(this)} deleteItem={this.deleteFromCart.bind(this)} />} />
+      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)}  deleteItem={this.deleteFromCart.bind(this)} />} />
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
-      <Route path="/address/" render={()=> <Address db={this.state.db} />} />
+      <Route path="/address/" render={()=> <Address db={this.state.db} addOrder={this.addProductToOrder.bind(this)}/>} />
       <Route path="/help/" component={Help} />  
       <Route path="/drawer/" component={Drawer1} />
       <Route path="/track/" render={()=> <Track db={this.state.db} />} /> 
