@@ -47,8 +47,9 @@ import {List, Avatar} from 'antd'
             
 //        )}
 //        </Table> 
-function Cart({db,changeQuantity}){
+class Cart extends React.Component{
 
+  render(){
   return (
     <div  style={{textAlign:"center"}}>
         <Table>
@@ -62,7 +63,7 @@ function Cart({db,changeQuantity}){
                  </tr>
                 </thead>
 
-                {db.cart.map(item=>
+                {this.props.db.cart.map((item,i)=>
       
 
                   <tr>
@@ -73,21 +74,22 @@ function Cart({db,changeQuantity}){
               <td>{item.name}</td>
               <td style={{color:"darkred"}}>{item.price}</td>
               <td><form>
-                <select onChange={(e)=>{changeQuantity(item,e)}}>
+                <select onChange={(e)=>{this.props.changeQuantity(item,e)}}>
                   
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
                 <option>5</option></select></form></td>
-              <td><Button variant="warning">Remove Item</Button></td>
+                
+                <td><Link to="/cart"><Button variant="warning" onClick={()=>{this.props.deleteItem(i)}}>Remove Item</Button></Link></td>
               
             </tr>
                   
              )}
              </Table> 
       
-     <h2 >Total : {db.cart.reduce((sum,item)=>sum+item.price*item.quantity,0)}</h2>
+     <h2 >Total : {this.props.db.cart.reduce((sum,item)=>sum+item.price*item.quantity,0)}</h2>
     <br></br>
      <Link to='/address/'>
      <Button variant="warning"> 
@@ -98,6 +100,6 @@ function Cart({db,changeQuantity}){
      <br></br>
      </div>
   )
-}
+}}
 
 export default Cart;
