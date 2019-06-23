@@ -115,6 +115,7 @@ do(e){
       <Row> 
         {this.props.db.products.map(p=> <Col span={8}>
         <Card
+        onClick={()=> this.props.itemDetail(p)}
       style={{ width: 250 }}
       cover={
         <img

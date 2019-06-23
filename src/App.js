@@ -68,6 +68,8 @@ class App extends React.Component{
       products : [],   
 
       cart:[],
+
+      item:[],
             
       track:[
         {
@@ -156,6 +158,14 @@ componentDidMount(){
   })
 }
 
+itemDetail(item){
+  let db = this.state.db;
+  db.item.pop(item);
+  db.item.push(item);
+  this.setState(
+    {db:db}
+  )
+}
 
 addProductToCart(item){
 console.log(item)
@@ -203,8 +213,9 @@ console.log(x[i]);
     })
   x.splice(i, 1);
   this.setState({
-    db: x
+    db:x
   })
+  
  }
 
  
@@ -262,9 +273,9 @@ sortDescending(){
       <Route path="/login/" exact render={()=> <Login googleLogin={this.googleLogin.bind(this)} />} />
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
-    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)}/> } />
-      <Route path="/item1/" component={Item} />
-      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)}  deleteItem={this.deleteFromCart.bind(this)} />} />
+    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)}/> } />
+    <Route path="/item1/" render={()=> <Item db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/>}   />
+      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)}  deleteItem={this.deleteFromCart.bind(this)}  />} />
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />

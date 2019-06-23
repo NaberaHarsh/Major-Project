@@ -13,26 +13,36 @@ class Item extends React.Component{
             <div>
                 <div className="row">
                     <div className="col-6">
-                        <img src="https://5.imimg.com/data5/CH/OU/MY-43025329/ladies-fancy-earring-500x500.jpg" alt="let's pretend a nice image is here" class="modify"></img>
+                    {this.props.db.item.map(p=>
+                        <img src={p.image} alt="let's pretend a nice image is here" class="modify"></img>
+                    )}
                         </div>
                     <div className="col-4"><br></br>
-                        <h3 style={{textAlign:"center"}}>American Diamond EarRing</h3>
-                        <p style={{textAlign:"center"}}>this is a sample description of the product</p>
-                        <br></br>
-                        <br></br>
-<h5 style={{textAlign:"center"}}>Rs. 799/- only</h5>
-<br></br>
-<br></br>
+                    {this.props.db.item.map(p=>
+                    <div>
+                        <h3 style={{textAlign:"center"}}>{p.name}</h3>
+                        
+                        <h3 style={{textAlign:"center"}}>{p.desc}</h3>
+                        
+                        <p style={{textAlign:"center", fontSize:25}}>Rs. {p.price}/- only</p>
+                        
+                    <br></br>
+<br></br>      
 <center>
 <Link to='/cart/'>
-<Button variant="dark">
-    Add To Cart</Button></Link>
+<Button variant="dark" onClick={()=>{this.props.addProduct(p); this.props.addOrder(p)}}>
+    Add To Cart</Button>
+    
+</Link>
+
 <br></br>
 <br></br>
 <Link to='/review/'>
 <Button variant="warning">
    Add Review</Button></Link>
 </center>
+</div>
+)}
                     </div>
                     <div className="col-2" >
                     <br></br>
