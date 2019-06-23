@@ -218,6 +218,32 @@ console.log(x[i]);
   console.log(db);
 }
 
+sortAscending(){
+  console.log("hello");
+  axios.get("http://localhost:8080/sortAscending")
+  .then((res)=>{
+    console.log(res);
+    let db = this.state.db;
+  db.products = res.data;
+    this.setState({
+       db:db
+    })
+  })
+}
+
+sortDescending(){
+  console.log("hello");
+  axios.get("http://localhost:8080/sortDescending")
+  .then((res)=>{
+    console.log(res);
+    let db = this.state.db;
+  db.products = res.data;
+    this.setState({
+       db:db
+    })
+  })
+}
+
 
   render(){
     return(
@@ -236,7 +262,7 @@ console.log(x[i]);
       <Route path="/login/" exact render={()=> <Login googleLogin={this.googleLogin.bind(this)} />} />
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
-    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/> } />
+    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)}/> } />
       <Route path="/item1/" component={Item} />
       <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)}  deleteItem={this.deleteFromCart.bind(this)} />} />
       <Route path="/review/" component={Review} />

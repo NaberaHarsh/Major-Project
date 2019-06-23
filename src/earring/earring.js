@@ -98,13 +98,13 @@ do(e){
     </Nav.Item>
     <Nav.Item>
       <Dropdown>
-  <Dropdown.Toggle variant="outline-info" id="dropdown-basic">
+  <Dropdown.Toggle variant="outline-info" id="dropdown-basic" >
     Price
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Low to High</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">High to Low</Dropdown.Item>
+    <Dropdown.Item href="#/action-1" onClick={()=> this.props.sortAscending()}>Low to High</Dropdown.Item>
+    <Dropdown.Item href="#/action-2" onClick={()=> this.props.sortDescending()}>High to Low</Dropdown.Item>
     
   </Dropdown.Menu>
 </Dropdown>
