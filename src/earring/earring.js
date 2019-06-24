@@ -116,7 +116,7 @@ do(e){
         {this.props.db.products.map(p=> <Col span={8}>
         <Card
         onClick={()=> this.props.itemDetail(p)}
-      style={{ width: 250 }}
+      style={{ width: 250, marginBottom:20 }}
       cover={
         <img
           alt="example"

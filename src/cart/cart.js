@@ -69,7 +69,7 @@ class Cart extends React.Component{
                   <tr>
               
               <td>
-                <Link to='/item1/'><img src={item.image} id="hh"></img></Link>
+                <Link to='/item1/'><img src={`http://localhost:8080/${item.image}`} id="hh" onClick={()=> this.props.itemDetail(item)}></img></Link>
                 </td>
               <td>{item.name}</td>
               <td style={{color:"darkred"}}>{item.price}</td>

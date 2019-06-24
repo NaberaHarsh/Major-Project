@@ -1,5 +1,7 @@
-/* .modify:hover{ 
-transition: transform .5s ease;
-transform: scale(1.5);
+#modify{ 
+    margin-left: 100px;
+height:400px;
+width:370px;
+margin-bottom: 50px;
     
-} */
+}

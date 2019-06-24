@@ -14,7 +14,7 @@ class Item extends React.Component{
                 <div className="row">
                     <div className="col-6">
                     {this.props.db.item.map(p=>
-                        <img src={p.image} alt="let's pretend a nice image is here" class="modify"></img>
+                        <img src={`http://localhost:8080/${p.image}`} alt="let's pretend a nice image is here" id="modify"></img>
                     )}
                         </div>
                     <div className="col-4"><br></br>
@@ -22,7 +22,7 @@ class Item extends React.Component{
                     <div>
                         <h3 style={{textAlign:"center"}}>{p.name}</h3>
                         
-                        <h3 style={{textAlign:"center"}}>{p.desc}</h3>
+                        <p style={{textAlign:"center",  fontSize:20}}>{p.desc}</p>
                         
                         <p style={{textAlign:"center", fontSize:25}}>Rs. {p.price}/- only</p>
                         
