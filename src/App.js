@@ -212,8 +212,10 @@ console.log(x[i]);
       console.log(res.data);
     })
   x.splice(i, 1);
+  let db=this.state.db;
+  db.cart=x;
   this.setState({
-    db:x
+    db:db
   })
   
  }
