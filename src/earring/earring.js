@@ -54,11 +54,11 @@ do(e){
                             <form
                             style={this.state.price_visible}>
                               <br></br>
-      <input type="radio" name="price" /><label>below 500</label><br></br>
-      <input type="radio" name="price" /><label>500 - 1500</label><br></br>
-      <input type="radio" name="price" /><label>1500 - 2500</label><br></br>
-      <input type="radio" name="price" /><label>2500 - 5000</label><br></br>
-      <input type="radio" name="price" /><label>above 5000</label><br></br>
+      <input type="radio" name="price" value="0" onClick={()=> this.props.filter0()} /><label>below 500</label><br></br>
+      <input type="radio" name="price" value="500" onClick={()=> this.props.filter500()}/><label>500 - 1499</label><br></br>
+      <input type="radio" name="price" onClick={()=> this.props.filter1500()} /><label>1500 - 2499</label><br></br>
+      <input type="radio" name="price" onClick={()=> this.props.filter2500() }/><label>2500 - 4999</label><br></br>
+      <input type="radio" name="price" onClick={()=> this.props.filter5000() } /><label>above 5000</label><br></br>
       </form>
                               </li>
                             <br></br>
@@ -67,9 +67,9 @@ do(e){
                              style={this.state.type_visible}
                             >
                              <br></br>
-      <input type="checkbox" name="type" /><label>American Diamond</label><br></br>
-      <input type="checkbox" name="type" /><label>Victorian Jewellery</label><br></br>
-      <input type="checkbox" name="type" /><label>Antique metal</label><br></br>
+      <input type="radio" name="type"  onClick={()=> this.props.AD()}/><label>American Diamond</label><br></br>
+      <input type="radio" name="type" onClick={()=> this.props.VJ()}/><label>Victorian Jewellery</label><br></br>
+      <input type="radio" name="type" onClick={()=> this.props.AM()}/><label>Antique metal</label><br></br>
       </form>
   </li>
                             <br></br>
@@ -78,9 +78,9 @@ do(e){
                              style={this.state.ocassion_visible}
                           >
                             <br></br>
-      <input type="checkbox" name="ocassion" /><label>Wedding Jewellery</label><br></br>
-      <input type="checkbox" name="ocassion" /><label>Diwali Special</label><br></br>
-      <input type="checkbox" name="ocassion" /><label>Navratra Special</label><br></br>
+      <input type="radio" name="ocassion" onClick={()=> this.props.wedding()}/><label>Wedding Jewellery</label><br></br>
+      <input type="radio" name="ocassion" onClick={()=> this.props.diwali()}/><label>Diwali Special</label><br></br>
+      <input type="radio" name="ocassion" onClick={()=> this.props.navratra()}/><label>Navratra Special</label><br></br>
       </form>
     
                             </li>
@@ -91,10 +91,10 @@ do(e){
                     <h3 style={{textAlign:"right", paddingRight:100}}>Sort</h3>
                         <Nav className="justify-content-end" activeKey="/home" >
     <Nav.Item>
-      <Nav.Link>Best Seller</Nav.Link>
+      <Nav.Link onClick={()=> this.props.best()}>Best Seller</Nav.Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link>New Arrivals</Nav.Link>
+      <Nav.Link onClick={()=> this.props.newArrival()}>New Arrivals</Nav.Link>
     </Nav.Item>
     <Nav.Item>
       <Dropdown>

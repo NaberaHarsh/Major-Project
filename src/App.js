@@ -257,6 +257,154 @@ sortDescending(){
   })
 }
 
+filter500(){
+  axios.get("http://localhost:8080/filter500")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+
+filter0(){
+  axios.get("http://localhost:8080/filter0")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+
+filter1500(){
+  axios.get("http://localhost:8080/filter1500")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+
+filter2500(){
+  axios.get("http://localhost:8080/filter2500")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+
+filter5000(){
+  axios.get("http://localhost:8080/filter5000")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+
+AD(){
+  axios.get("http://localhost:8080/AD")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+AM(){
+  axios.get("http://localhost:8080/AM")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+VJ(){
+  axios.get("http://localhost:8080/VJ")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+wedding(){
+  axios.get("http://localhost:8080/wedding")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+diwali(){
+  axios.get("http://localhost:8080/diwali")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+navratra(){
+  axios.get("http://localhost:8080/navratra")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+best(){
+  axios.get("http://localhost:8080/best")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
+newArrival(){
+  axios.get("http://localhost:8080/newArrival")
+  .then((res)=>{
+    console.log(res);
+    let db=this.state.db;
+    db.products=res.data;
+    this.setState({
+      db:db
+    })
+  })
+}
 
   render(){
     return(
@@ -275,7 +423,7 @@ sortDescending(){
       <Route path="/login/" exact render={()=> <Login googleLogin={this.googleLogin.bind(this)} />} />
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
-    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)}/> } />
+    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
     <Route path="/item1/" render={()=> <Item db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/>}   />
       <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)}  deleteItem={this.deleteFromCart.bind(this)} itemDetail={this.itemDetail.bind(this)} />} />
       <Route path="/review/" component={Review} />
