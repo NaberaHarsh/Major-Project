@@ -123,7 +123,7 @@ do(e){
           src={`http://localhost:8080/${p.image}`}
         />
       }
-      actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p); this.props.addOrder(p)}}>Add To Cart</Button></Link>]}
+      actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p)}}>Add To Cart</Button></Link>]}
       
       >
       <center>

@@ -92,7 +92,7 @@ class Cart extends React.Component{
      <h2 >Total : {this.props.db.cart.reduce((sum,item)=>sum+item.price*item.quantity,0)}</h2>
     <br></br>
      <Link to='/address/'>
-     <Button variant="warning"> 
+     <Button variant="warning" onClick={(item)=> this.props.addOrder(item)}> 
     Proceed To Checkout
      </Button>
      </Link>

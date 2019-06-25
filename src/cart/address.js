@@ -123,7 +123,7 @@ style={this.state.visible}
 
 
 <Link to='/payment'>
-  <Button variant="warning" type="submit" onClick={()=> {this.setValue(); this.props.addOrder()}}>
+  <Button variant="warning" type="submit" onClick={(p)=> {this.setValue(); this.props.addOrder(p)}}>
     Proceed To Pay
   </Button>
   </Link>

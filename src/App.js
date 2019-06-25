@@ -61,6 +61,17 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state={};
+this.state.pendant="pendant";
+this.state.earring="earring";
+this.state.pendant="necklace";
+this.state.watch="watch";
+this.state.jhumki="jhumki";
+this.state.mangalsutra="mangulsutra";
+this.state.bangle="bangle";
+this.state.rings="rings";
+this.state.nosepin="nosepin";
+this.state.chain="chain";
+
     this.state.ordered={}
         
     this.state.db={
@@ -127,6 +138,7 @@ googleLogin(){
 
 
 componentDidMount(){
+  console.log(this.state.db.track)
   axios.get('http://localhost:8080/earring')
   .then((res)=>{
     console.log(res)
@@ -186,10 +198,10 @@ console.log(item)
   console.log(db);
  }
 
- addProductToOrder(item){
+ addProductToOrder(item,p){
   console.log(item)
   
-    let obj={cartinfo:this.state.db.cart, address:this.state.db.address}
+    let obj={cartinfo:item , address:p}
     axios.post('http://localhost:8080/showorder',obj)
     .then((res)=>{
       console.log(res)
@@ -413,7 +425,7 @@ newArrival(){
       <h1 id="title">Mahek Jewellery</h1>
       <Navigation />
       <Route path="/" exact component={ControlledCarousel} />
-      <Route path="/" exact component={Cards} />
+      <Route path="/" exact  component={Cards} />
       <br></br>
       <Route path="/" exact component={InfoBox} />
       <br></br>
@@ -423,9 +435,9 @@ newArrival(){
       <Route path="/login/" exact render={()=> <Login googleLogin={this.googleLogin.bind(this)} />} />
       <Route path="/signup/" component={Signup} />
       <Route path="/pendant/" component={Pendant} />
-    <Route path="/earring/" render={()=> <Earring db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    <Route path={`/${this.props.value}/`} render={()=> <Earring db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
     <Route path="/item1/" render={()=> <Item db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/>}   />
-      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)}  deleteItem={this.deleteFromCart.bind(this)} itemDetail={this.itemDetail.bind(this)} />} />
+      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)} addOrder={this.addProductToOrder.bind(this)} deleteItem={this.deleteFromCart.bind(this)} itemDetail={this.itemDetail.bind(this)} />} />
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
@@ -440,6 +452,7 @@ newArrival(){
       <Route path="/replace_res/" component={Replace_res} />
       <Route path="/return_res/" component={Return_res} />
       <Route path="/cancel_res/" component={Cancel_res} />
+      
 
 
     <footer>
