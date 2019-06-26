@@ -15,7 +15,7 @@ render(){
                 <CardDeck>
                 
                 <Link to='/pendant/'>
-                <Card style={{ width: '15rem',  marginTop:20 , marginLeft:20} } onClick={()=>this.props.hello("Pendant")} >
+                <Card style={{ width: '15rem',  marginTop:20 , marginLeft:20} } onClick={()=>this.props.hello("Pendant")}>
                 <Card.Img variant="top" src="https://charujewelsonline.com/wp-content/uploads/2016/10/CJSPS0122-Y.jpg" style={{height:250}}/>
   <Card.Body style={{textAlign:"center"}}>
     <Card.Title >Pendant </Card.Title>
@@ -31,7 +31,7 @@ render(){
 </Card>
 </Link>
 <Link to='/necklace/'>
-<Card style={{ width: '15rem' , marginTop:20 }} onClick={()=>this.props.hello("Necklace")} >
+<Card style={{ width: '15rem' , marginTop:20 }}onClick={()=>this.props.hello("Necklace")} >
   <Card.Img variant="top" src="https://www.malabargoldanddiamonds.com/media/catalog/product/cache/5/image/800x800/0dc2d03fe217f8c83829496872af24a0/n/e/neanbva001.jpg" style={{height:250}}/>
   <Card.Body style={{textAlign:"center"}}>
     <Card.Title >Necklace</Card.Title>
@@ -62,7 +62,7 @@ render(){
 <CarouselItem>
 <CardDeck>
 <Link to='/bangle/'>
-                <Card style={{ width: '15rem',  marginTop:20 , marginLeft:20} } onClick={()=>this.props.hello("Bangle")}>
+                <Card style={{ width: '15rem',  marginTop:20 , marginLeft:20} } onClick={()=>this.props.hello("Bangles")}>
   <Card.Img variant="top" src="https://charujewelsonline.com/wp-content/uploads/2016/10/CJBA0057-Y.jpg" style={{height:250}}/>
   <Card.Body style={{textAlign:"center"}}>
     <Card.Title >Bangles</Card.Title>

@@ -17,7 +17,7 @@ class Item extends React.Component{
                         <img src={`http://localhost:8080/${p.image}`} alt="let's pretend a nice image is here" id="modify"></img>
                     )}
                         </div>
-                    <div className="col-4"><br></br>
+                    <div className="col-4"><br></br><br></br>
                     {this.props.db.item.map(p=>
                     <div>
                         <h3 style={{textAlign:"center"}}>{p.name}</h3>
@@ -30,16 +30,13 @@ class Item extends React.Component{
 <br></br>      
 <center>
 <Link to='/cart/'>
-<Button variant="dark" onClick={()=>{this.props.addProduct(p); this.props.addOrder(p)}}>
+<Button variant="warning" onClick={()=>{this.props.addProduct(p); this.props.addOrder(p)}}>
     Add To Cart</Button>
     
 </Link>
 
 <br></br>
 <br></br>
-<Link to='/review/'>
-<Button variant="warning">
-   Add Review</Button></Link>
 </center>
 </div>
 )}

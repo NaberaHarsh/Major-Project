@@ -19,7 +19,7 @@ class Bangle extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/read/Bangle')
+        axios.get('http://localhost:8080/read/Bangles')
           .then((res)=>{
             console.log(res)
           let db = this.props.db;

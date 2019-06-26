@@ -242,6 +242,14 @@ console.log(x[i]);
   console.log(db);
 }
 
+hello=(item)=>{
+  console.log(item);
+this.setState({
+  value:item
+})
+  
+}
+
 sortAscending(){
   axios.get(`http://localhost:8080/sortAscending/${this.state.value}`)
   .then((res)=>{
@@ -267,13 +275,7 @@ sortDescending(){
   })
 }
 
-hello=(item)=>{
-  console.log(item);
-this.setState({
-  value:item
-})
-  
-}
+
 
 filter500(){
   console.log(this.state.value);
