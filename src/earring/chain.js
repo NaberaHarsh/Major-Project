@@ -4,19 +4,31 @@ import { CardDeck , CardColumns, Dropdown, Nav} from 'react-bootstrap';
 import {Card} from 'antd'
 import 'antd/dist/antd.css';
 import {Row, Icon, Col, Avatar } from 'antd';
-import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
+import { Button } from 'react-bootstrap';
 import { configConsumerProps } from 'antd/lib/config-provider';
 const { Meta } = Card;
 
 
-class Earring extends React.Component{
+class Chain extends React.Component{
   constructor(props){
     super(props)
   
     this.state = { price_visible: {display : 'none'}, type_visible: {display : 'none'}, ocassion_visible: {display : 'none'}};
     }
+
+    componentDidMount(){
+        axios.get('http://localhost:8080/read/Chain')
+          .then((res)=>{
+            console.log(res)
+          let db = this.props.db;
+          db.products = res.data;
+            this.setState({
+               db:db
+            })
+          })
+        }
 
 do(e){
   
@@ -37,17 +49,7 @@ do(e){
   }
 }
 
-componentDidMount(){
-axios.get('http://localhost:8080/read/Earring')
-  .then((res)=>{
-    console.log(res)
-  let db = this.props.db;
-  db.products = res.data;
-    this.setState({
-       db:db
-    })
-  })
-}
+
 
  
 
@@ -160,4 +162,4 @@ axios.get('http://localhost:8080/read/Earring')
   }
 
 
-export default Earring;
+export default Chain;

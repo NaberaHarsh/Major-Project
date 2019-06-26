@@ -10,7 +10,6 @@ import Footer from './footer/footer'
 import Drawer1 from './profile/profile'
 import Login from './profile/login'
 import Signup from './profile/signup'
-import Pendant from './pendant/pendant'
 import Earring from './earring/earring'
 import Item from './earring/earring_item'
 import Cart from './cart/cart'
@@ -30,6 +29,18 @@ import Cancel_res from './profile/cancel_res'
 import axios from 'axios';
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import Pendant from './earring/pendant'
+import Necklace from './earring/necklace'
+import Jhumki from './earring/jhumki'
+import Mangalsutra from './earring/mangalsutra'
+import Bangle from './earring/bangles'
+import Chain from './earring/chain'
+import Nosepin from './earring/nosepin'
+import Ring from './earring/ring'
+import Watch from './earring/watch'
+
+
+
 
 
 
@@ -61,16 +72,8 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state={};
-this.state.pendant="pendant";
-this.state.earring="earring";
-this.state.pendant="necklace";
-this.state.watch="watch";
-this.state.jhumki="jhumki";
-this.state.mangalsutra="mangulsutra";
-this.state.bangle="bangle";
-this.state.rings="rings";
-this.state.nosepin="nosepin";
-this.state.chain="chain";
+this.state.value="";
+
 
     this.state.ordered={}
         
@@ -138,17 +141,7 @@ googleLogin(){
 
 
 componentDidMount(){
-  console.log(this.state.db.track)
-  axios.get('http://localhost:8080/earring')
-  .then((res)=>{
-    console.log(res)
-  let db = this.state.db;
-  db.products = res.data;
-    this.setState({
-       db:db
-    })
-  })
-
+   
   axios.get('http://localhost:8080/cartItem')
   .then((res)=>{
     console.log(res)
@@ -201,7 +194,7 @@ console.log(item)
  addProductToOrder(item,p){
   console.log(item)
   
-    let obj={cartinfo:item , address:p}
+    let obj={cartinfo:this.state.db , address:this.state.address}
     axios.post('http://localhost:8080/showorder',obj)
     .then((res)=>{
       console.log(res)
@@ -269,8 +262,17 @@ sortDescending(){
   })
 }
 
+hello=(item)=>{
+  console.log(item);
+this.setState({
+  value:item
+})
+  
+}
+
 filter500(){
-  axios.get("http://localhost:8080/filter500")
+  console.log(this.state.value);
+  axios.get(`http://localhost:8080/filter500/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -282,7 +284,7 @@ filter500(){
 }
 
 filter0(){
-  axios.get("http://localhost:8080/filter0")
+  axios.get(`http://localhost:8080/filter0/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -294,7 +296,7 @@ filter0(){
 }
 
 filter1500(){
-  axios.get("http://localhost:8080/filter1500")
+  axios.get(`http://localhost:8080/filter1500/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -306,7 +308,7 @@ filter1500(){
 }
 
 filter2500(){
-  axios.get("http://localhost:8080/filter2500")
+  axios.get(`http://localhost:8080/filter2500/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -318,7 +320,7 @@ filter2500(){
 }
 
 filter5000(){
-  axios.get("http://localhost:8080/filter5000")
+  axios.get(`http://localhost:8080/filter5000/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -330,7 +332,7 @@ filter5000(){
 }
 
 AD(){
-  axios.get("http://localhost:8080/AD")
+  axios.get(`http://localhost:8080/AD/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -341,7 +343,7 @@ AD(){
   })
 }
 AM(){
-  axios.get("http://localhost:8080/AM")
+axios.get(`http://localhost:8080/AM/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -352,7 +354,7 @@ AM(){
   })
 }
 VJ(){
-  axios.get("http://localhost:8080/VJ")
+  axios.get(`http://localhost:8080/VJ/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -363,7 +365,7 @@ VJ(){
   })
 }
 wedding(){
-  axios.get("http://localhost:8080/wedding")
+  axios.get(`http://localhost:8080/wedding/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -374,7 +376,7 @@ wedding(){
   })
 }
 diwali(){
-  axios.get("http://localhost:8080/diwali")
+  axios.get(`http://localhost:8080/diwali/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -385,7 +387,7 @@ diwali(){
   })
 }
 navratra(){
-  axios.get("http://localhost:8080/navratra")
+  axios.get(`http://localhost:8080/navratra/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -396,7 +398,7 @@ navratra(){
   })
 }
 best(){
-  axios.get("http://localhost:8080/best")
+  axios.get(`http://localhost:8080/best/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -406,8 +408,11 @@ best(){
     })
   })
 }
+
+
+
 newArrival(){
-  axios.get("http://localhost:8080/newArrival")
+  axios.get(`http://localhost:8080/newArrival/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db=this.state.db;
@@ -425,7 +430,7 @@ newArrival(){
       <h1 id="title">Mahek Jewellery</h1>
       <Navigation />
       <Route path="/" exact component={ControlledCarousel} />
-      <Route path="/" exact  component={Cards} />
+      <Route path="/" exact  render={(props)=><Cards {...props} hello={this.hello}></Cards>} />
       <br></br>
       <Route path="/" exact component={InfoBox} />
       <br></br>
@@ -434,8 +439,16 @@ newArrival(){
 
       <Route path="/login/" exact render={()=> <Login googleLogin={this.googleLogin.bind(this)} />} />
       <Route path="/signup/" component={Signup} />
-      <Route path="/pendant/" component={Pendant} />
-    <Route path={`/${this.props.value}/`} render={()=> <Earring db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+      <Route path='/pendant/' render={()=> <Pendant db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/earring/' render={()=> <Earring db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/necklace/' render={()=> <Necklace db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/jhumki/' render={()=> <Jhumki db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/mangalsutra/' render={()=> <Mangalsutra db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/bangle/' render={()=> <Bangle db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/chain/' render={()=> <Chain db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/nosepin/' render={()=> <Nosepin db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/ring/' render={()=> <Ring db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
+    < Route path='/watch/' render={()=> <Watch db={this.state.db}  addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
     <Route path="/item1/" render={()=> <Item db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/>}   />
       <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)} addOrder={this.addProductToOrder.bind(this)} deleteItem={this.deleteFromCart.bind(this)} itemDetail={this.itemDetail.bind(this)} />} />
       <Route path="/review/" component={Review} />
@@ -452,7 +465,7 @@ newArrival(){
       <Route path="/replace_res/" component={Replace_res} />
       <Route path="/return_res/" component={Return_res} />
       <Route path="/cancel_res/" component={Cancel_res} />
-      
+            
 
 
     <footer>

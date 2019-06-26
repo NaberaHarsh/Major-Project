@@ -11,7 +11,7 @@ import { configConsumerProps } from 'antd/lib/config-provider';
 const { Meta } = Card;
 
 
-class Earring extends React.Component{
+class Pendant extends React.Component{
   constructor(props){
     super(props)
   
@@ -37,18 +37,18 @@ do(e){
   }
 }
 
-componentDidMount(){
-axios.get('http://localhost:8080/read/Earring')
-  .then((res)=>{
-    console.log(res)
-  let db = this.props.db;
-  db.products = res.data;
-    this.setState({
-       db:db
-    })
-  })
-}
 
+componentDidMount(){
+    axios.get('http://localhost:8080/read/Pendant')
+      .then((res)=>{
+        console.log(res)
+      let db = this.props.db;
+      db.products = res.data;
+        this.setState({
+           db:db
+        })
+      })
+    }
  
 
   render(){
@@ -160,4 +160,4 @@ axios.get('http://localhost:8080/read/Earring')
   }
 
 
-export default Earring;
+export default Pendant;
