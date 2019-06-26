@@ -98,23 +98,10 @@ class Navigation extends React.Component {
                                     <p>
                                     <Link to='/login' on onClick={()=> {this.onClose(); this.checkLogin()}}>Login </Link></p>
                                     <p><a href="/order" on onClick={this.onClose}>My Order</a></p>
-                                    <p><Link to='/track/' on onClick={this.onClose} >Track Order</Link></p>
                                     <p><a href="/" onClick={this.logout}>Sign Out</a></p>
                                 </Drawer>
                             </li>
-                            {/* <li className="nav-item dropdown" >
-                                <NavDropdown name="Dropdown">
-
-                                    <Link to='/login' className="dropdown-item">Login</Link>
-
-
-
-
-                                    <a className="dropdown-item" >Track Order</a>
-                                    <a className="dropdown-item" >My Orders</a>
-                                    <a className="dropdown-item" >SignOut</a>
-                                </NavDropdown>
-                            </li> */}
+                            
 
                         </ul>
                     </div>

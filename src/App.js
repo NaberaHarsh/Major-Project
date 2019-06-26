@@ -18,14 +18,15 @@ import Address from './cart/address'
 import Payment from './cart/payment'
 import Placed from './cart/placed'
 import Help from './footer/help'
-import Track from './profile/track'
+// import Track from './profile/track'
 import Order from './profile/orders'
 import Return from './footer/return'
 import Replace from './footer/replace'
 import Store from './footer/store'
-import Replace_res from './footer/replace_res'
-import Return_res from './footer/return_res'
-import Cancel_res from './profile/cancel_res'
+// import Replace_res from './footer/replace_res'
+import Feedback from './footer/feedback'
+// import Return_res from './footer/return_res'
+// import Cancel_res from './profile/cancel_res'
 import axios from 'axios';
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -461,14 +462,14 @@ newArrival(){
       <Route path="/address/" render={()=> <Address db={this.state.db} addOrder={this.addProductToOrder.bind(this)}/>} />
       <Route path="/help/" component={Help} />  
       <Route path="/drawer/" component={Drawer1} />
-      <Route path="/track/" render={()=> <Track db={this.state.db} />} /> 
+      {/* <Route path="/track/" render={()=> <Track db={this.state.db} />} />  */}
       <Route path="/order/" render={()=> <Order db={this.state.db} />} />  
       <Route path="/return/" render={()=> <Return db={this.state.db} />} />  
       <Route path="/replace/" render={()=> <Replace db={this.state.db} />} />  
       <Route path="/store/" component={Store} />
-      <Route path="/replace_res/" component={Replace_res} />
-      <Route path="/return_res/" component={Return_res} />
-      <Route path="/cancel_res/" component={Cancel_res} />
+      <Route path="/feedback/" component={Feedback} />
+      {/* <Route path="/return_res/" component={Return_res} /> */}
+      {/* <Route path="/cancel_res/" component={Cancel_res} /> */}
             
 
 
