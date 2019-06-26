@@ -152,6 +152,16 @@ componentDidMount(){
     })
   })
 
+  axios.get('http://localhost:8080/getorder')
+  .then((res)=>{
+    console.log(res)
+    let db=this.state.db;
+    db.order=res.data;
+    this.setState({
+      db:db
+    })
+  })
+
   axios.get('http://localhost:8080/getAddress')
   .then((res)=>{
     console.log(res)
@@ -191,20 +201,15 @@ console.log(item)
   console.log(db);
  }
 
- addProductToOrder(item,p){
+ addProductToOrder(item){
   console.log(item)
-  
-    let obj={cartinfo:this.state.db , address:this.state.address}
-    axios.post('http://localhost:8080/showorder',obj)
-    .then((res)=>{
-      console.log(res)
-    })
-    // let db = this.state.db;
-    // item.quantity = 1;
-    // db.cart.push(item);
-    // this.setState(
-    //   {db:db}
-    // )
+  let db = this.state.db;
+  item.quantity = 1;
+  db.order.push(item);
+  this.setState(
+    {db:db}
+  )
+    
    }
 
  deleteFromCart(i){
@@ -237,8 +242,7 @@ console.log(x[i]);
 }
 
 sortAscending(){
-  console.log("hello");
-  axios.get("http://localhost:8080/sortAscending")
+  axios.get(`http://localhost:8080/sortAscending/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db = this.state.db;
@@ -250,8 +254,8 @@ sortAscending(){
 }
 
 sortDescending(){
-  console.log("hello");
-  axios.get("http://localhost:8080/sortDescending")
+  
+  axios.get(`http://localhost:8080/sortDescending/${this.state.value}`)
   .then((res)=>{
     console.log(res);
     let db = this.state.db;

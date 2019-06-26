@@ -64,6 +64,12 @@ setValue(){
 .then((res)=>{
 console.log(res)
  })
+
+ let order={cartinfo:this.props.db.cart , name:this.name, house:this.house, street:this.street, city:this.city, state:this.state, pincode:this.pincode, mail:this.mail, pno:this.pno }
+    axios.post('http://localhost:8080/showorder',order)
+    .then((res)=>{
+      console.log(res)
+    })
 }
 
     render(){
@@ -123,7 +129,7 @@ style={this.state.visible}
 
 
 <Link to='/payment'>
-  <Button variant="warning" type="submit" onClick={(p)=> {this.setValue(); this.props.addOrder(p)}}>
+  <Button variant="warning" type="submit" onClick={()=> this.setValue()}>
     Proceed To Pay
   </Button>
   </Link>
