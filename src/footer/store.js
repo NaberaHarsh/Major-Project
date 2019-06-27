@@ -11,7 +11,7 @@ return(
         <h6>Mahek Jewellery</h6>
         <p>Moolchand Market, Diggi Bazar</p>
         <p>Ajmer(Raj), 305001</p>
-        <br></br>
+        <br></br> <br></br> <br></br> <br></br> <br></br>
     </div>
 )
     }

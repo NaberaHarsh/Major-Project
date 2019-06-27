@@ -42,7 +42,7 @@ class Feedback extends React.Component {
             <Card style={{ width: '30rem'}}>
     <Card.Title ><h2 id="heading">Feedback form</h2><br></br> </Card.Title>
     <form>
-<label id="label">Which feedback did you bought?</label>
+<label id="label">Which product did you bought?</label>
 <select id="options"
  onChange={(e)=> this.getValue1(e)}>
             <option value="Pendant">Pendant</option>

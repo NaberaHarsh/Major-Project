@@ -65,9 +65,9 @@ class Navigation extends React.Component {
                             </li>
                             <li className="nav-item dropdown" >
                                 <NavDropdown name="Dropdown">
-                                    <a className="dropdown-item">American Diamond</a>
-                                    <a className="dropdown-item">Victorian Jewellery</a>
-                                    <a className="dropdown-item" >Antique Items</a>
+                                    <Link to="/common" className="dropdown-item" onClick={()=>this.props.hey("American_Diamond")}>American Diamond</Link>
+                                    <Link to="/victorian" className="dropdown-item" onClick={()=>this.props.hey("Victorian_Jewellery")}>Victorian Jewellery</Link>
+                                    <Link to="/antique" className="dropdown-item" onClick={()=>this.props.hey("Antique_Items")}>Antique Items</Link>
                                 </NavDropdown>
                             </li>
                             <li className="nav-item">
@@ -75,10 +75,10 @@ class Navigation extends React.Component {
                             </li>
                             <li className="nav-item dropdown" >
                                 <NavDropdown name="Dropdown">
-                                    <a className="dropdown-item">Earrings</a>
-                                    <a className="dropdown-item">Necklace</a>
-                                    <a className="dropdown-item">Rings</a>
-                                    <a className="dropdown-item">Mangalsutra</a>
+                                    <Link to="/earring" className="dropdown-item" onClick={()=>this.props.hello("Earring")}>Earrings</Link>
+                                    <Link to="/necklace" className="dropdown-item" onClick={()=>this.props.hello("Necklace")}>Necklace</Link>
+                                    <Link to="/ring" className="dropdown-item"onClick={()=>this.props.hello("Ring")}>Rings</Link>
+                                    <Link to="/mangalsutra" className="dropdown-item" onClick={()=>this.props.hello("Mangalsutra")}>Mangalsutra</Link>
                                 </NavDropdown>
                             </li>
                             <li className="nav-item">
