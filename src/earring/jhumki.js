@@ -28,6 +28,7 @@ class Jhumki extends React.Component{
                db:db
             })
           })
+          this.props.hello("Jhumki");
         }
 
 do(e){

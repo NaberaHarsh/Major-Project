@@ -35,7 +35,7 @@ class ControlledCarousel extends React.Component {
           <Carousel.Item>
             <img id="size"
               className="d-block w-100"
-              src="http://www.khazanajewellery.com/wp-content/uploads/2018/12/LowWastage_HomePage_Nov18_Eng_6601_DT2.jpg"
+              src=".././assets/mj_carousel.jpg"
               alt="First slide"
             />
 

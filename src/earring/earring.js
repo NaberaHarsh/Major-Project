@@ -47,6 +47,8 @@ axios.get('http://localhost:8080/read/Earring')
        db:db
     })
   })
+
+  this.props.hello("Earring");
 }
 
  
@@ -133,6 +135,7 @@ axios.get('http://localhost:8080/read/Earring')
         <img
           alt="example"
           src={`http://localhost:8080/${p.image}`}
+          
         />
       }
       actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p)}}>Add To Cart</Button></Link>]}

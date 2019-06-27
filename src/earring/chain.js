@@ -28,6 +28,8 @@ class Chain extends React.Component{
                db:db
             })
           })
+          this.props.hello("Chain");
+
         }
 
 do(e){

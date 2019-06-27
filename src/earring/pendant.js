@@ -48,6 +48,7 @@ componentDidMount(){
            db:db
         })
       })
+      this.props.hello("Pendant");
     }
  
 

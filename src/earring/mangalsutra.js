@@ -28,6 +28,7 @@ class Mangalsutra extends React.Component{
                db:db
             })
           })
+          this.props.hello("Mangalsutra");
         }
 
 do(e){

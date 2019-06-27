@@ -47,6 +47,8 @@ axios.get("http://localhost:8080/type/Antique_Items")
       db:db
     })
   })
+
+  this.props.hey("Antique_Items");
 }
 
   render(){

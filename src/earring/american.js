@@ -47,6 +47,8 @@ axios.get("http://localhost:8080/type/American_Diamond")
       db:db
     })
   })
+
+  this.props.hey("Amrican_Diamond");
 }
 
   render(){
@@ -131,6 +133,7 @@ axios.get("http://localhost:8080/type/American_Diamond")
         <img
           alt="example"
           src={`http://localhost:8080/${p.image}`}
+          height="200"
         />
       }
       actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p)}}>Add To Cart</Button></Link>]}

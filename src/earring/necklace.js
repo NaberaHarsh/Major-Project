@@ -28,6 +28,7 @@ class Necklace extends React.Component{
                db:db
             })
           })
+          this.props.hello("Necklace");
         }
 
 do(e){

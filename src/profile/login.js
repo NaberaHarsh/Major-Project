@@ -35,7 +35,7 @@ class Login extends React.Component{
   <Link to="/signup/">Create Account</Link>
   </p>
   <p>Or</p>
-  <p><pre>Sign in using   <Icon type="google" onClick={()=> {this.props.googleLogin()}} /></pre></p>
+  <p><pre>Sign in using   <Icon type="google"  /></pre></p>
 
   
   <Button variant="warning" type="submit">

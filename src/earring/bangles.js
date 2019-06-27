@@ -28,6 +28,7 @@ class Bangle extends React.Component{
                db:db
             })
           })
+          this.props.hello("Bangles");
         }
 
 do(e){

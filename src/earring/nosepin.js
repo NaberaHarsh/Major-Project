@@ -28,6 +28,7 @@ class Nosepin extends React.Component{
                db:db
             })
           })
+          this.props.hello("Nosepin");
         }
 
 do(e){
