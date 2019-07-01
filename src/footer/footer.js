@@ -18,7 +18,7 @@ class Footer extends React.Component{
 
         Submit(){
             let obj={mail:this.mail}
-            axios.post('http://localhost:8080/subscribe', obj)
+            axios.post('/subscribe', obj)
           .then((res)=>{
         console.log(res)
            })
@@ -40,7 +40,7 @@ class Footer extends React.Component{
                     <div class="col-4" style={{ marginTop:25}}>
                         <h4>Subscribe to recieve exclusive Offers</h4>
                         <form>
-                            <input type="email" placeholder="E-mail ID" style={{marginLeft:50}} onChange={(e)=> this.getValue1(e)}></input>
+                            <input type="email" placeholder="E-mail ID" style={{marginLeft:50}} onChange={(e)=> this.getValue1(e)} required></input>
                             <button onClick={()=> this.Submit()}>Subscribe</button>
                         </form>
                         <br></br>

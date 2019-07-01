@@ -38,7 +38,7 @@ do(e){
 }
 
 componentDidMount(){
-axios.get('http://localhost:8080/read/Earring')
+axios.get('/read/Earring')
   .then((res)=>{
     console.log(res)
   let db = this.props.db;
@@ -134,7 +134,7 @@ axios.get('http://localhost:8080/read/Earring')
       cover={
         <img
           alt="example"
-          src={`http://localhost:8080/${p.image}`}
+          src={`/${p.image}`}
           
         />
       }

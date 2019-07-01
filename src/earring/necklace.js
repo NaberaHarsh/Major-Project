@@ -19,7 +19,7 @@ class Necklace extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/read/Necklace')
+        axios.get('/read/Necklace')
           .then((res)=>{
             console.log(res)
           let db = this.props.db;
@@ -135,7 +135,7 @@ do(e){
       cover={
         <img
           alt="example"
-          src={`http://localhost:8080/${p.image}`}
+          src={`/${p.image}`}
         />
       }
       actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p)}}>Add To Cart</Button></Link>]}

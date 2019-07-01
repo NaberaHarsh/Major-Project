@@ -26,9 +26,9 @@ render(){
                     <Card.Title>Payment Details</Card.Title>
                     <br></br>
                 <Form>
-      <input type="radio" name="pay" value="COD" onChange={(e)=>{this.Change(e)}}  ></input>
+      <input type="radio" name="pay" value="COD" onChange={(e)=>{this.Change(e)}}  required></input>
       <Form.Label>COD</Form.Label><br></br>
-      <input type="radio" name="pay" onChange={(e)=>{this.Change(e)}}  value="paytm"></input>
+      <input type="radio" name="pay" onChange={(e)=>{this.Change(e)}}  value="paytm" required></input>
       <Form.Label>Paytm</Form.Label><br></br>
       <Form.Label style={this.state.visible}>No.  0123456789 </Form.Label>      
       <Form.Label style={this.state.visible}>Transiction Id</Form.Label>

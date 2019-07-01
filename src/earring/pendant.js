@@ -39,7 +39,7 @@ do(e){
 
 
 componentDidMount(){
-    axios.get('http://localhost:8080/read/Pendant')
+    axios.get('/read/Pendant')
       .then((res)=>{
         console.log(res)
       let db = this.props.db;
@@ -133,7 +133,7 @@ componentDidMount(){
       cover={
         <img
           alt="example"
-          src={`http://localhost:8080/${p.image}`}
+          src={`/${p.image}`}
         />
       }
       actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p)}}>Add To Cart</Button></Link>]}

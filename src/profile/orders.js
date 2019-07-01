@@ -9,6 +9,11 @@ class Order extends React.Component{
     this.state.x=0;
   }
 
+  componentDidMount(){
+
+    this.props.history.push("/order")
+  }
+
 // repeat(){
 //   for(let i of cartinfo){
 // this.setState({
@@ -36,11 +41,15 @@ class Order extends React.Component{
               <tr>
           
           <td>
-            <Link to='/item1/'><img src={`http://localhost:8080/${item.cartinfo[0].image}`} id="hh"></img></Link>
+            {item.cartinfo.map(p=>
+            <Link to='/item1/'><p><img src={`/${p.image}`} id="hh"></img></p></Link>
+            )}
             </td>
           <td><br></br><br></br> <h6>{item._id}</h6></td>
           <td style={{fontFamily:"arial", fontSize:15}}><br></br><br></br>
-          {item.cartinfo[`${this.state.x}`].name}
+          {item.cartinfo.map(k=>
+          <p>{k.name}</p>
+          )}
             </td>
           <td>{item.name}<br></br>{item.house},{item.street}<br></br>{item.city},{item.state}<br></br>{item.pincode}</td>
           

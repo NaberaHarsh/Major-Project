@@ -14,7 +14,7 @@ class Item extends React.Component{
                 <div className="row">
                     <div className="col-6">
                     {this.props.db.item.map(p=>
-                        <img src={`http://localhost:8080/${p.image}`} alt="let's pretend a nice image is here" id="modify"></img>
+                        <img src={`/${p.image}`} alt="let's pretend a nice image is here" id="modify"></img>
                     )}
                         </div>
                     <div className="col-4"><br></br><br></br>

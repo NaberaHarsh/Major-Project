@@ -7,6 +7,8 @@ import 'antd/dist/antd.css'
 // import Login from './profile/login
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import axios from 'axios'
+
 
 
 
@@ -17,7 +19,7 @@ class Navigation extends React.Component {
         this.state={};
         this.state.value="";
         this.checkLogin()
-        
+                
     }
         state = { visible: false };
 
@@ -36,6 +38,8 @@ class Navigation extends React.Component {
         //             })
         //           }
 
+        
+
 
     checkLogin(){
         firebase.auth().onAuthStateChanged((user) => {
@@ -43,6 +47,7 @@ class Navigation extends React.Component {
               this.setState({
                 user:user.displayName
               })
+              
               console.log("logged in",user)
             } else {
                 this.setState({
@@ -103,7 +108,7 @@ this.setState({
                             </li>
                             <li className="nav-item dropdown" >
                                 <NavDropdown name="Dropdown">
-                                    <Link to="/antique" className="dropdown-item" onClick={()=>this.props.hey("American_Diamond")}>American Diamond</Link>
+                                    <Link to="/american" className="dropdown-item" onClick={()=>this.props.hey("American_Diamond")}>American Diamond</Link>
                                     <Link to="/victorian" className="dropdown-item" onClick={()=>this.props.hey("Victorian_Jewellery")}>Victorian Jewellery</Link>
                                     <Link to="/antique" className="dropdown-item" onClick={()=>this.props.hey("Antique_Items")}>Antique Items</Link>
                                 </NavDropdown>
@@ -134,8 +139,8 @@ this.setState({
                                     visible={this.state.visible}
                                 >
                                     
-                                    <p><Link on onClick={()=> {this.onClose(); this.props.googleLogin()} }>{this.state.user}</Link> </p>
-                                    <p><a href="/order" on onClick={this.onClose}>My Order</a></p>
+                                    <p><Link  onClick={()=> {this.onClose(); this.props.googleLogin()} }>{this.state.user}</Link> </p>
+                                    <Link to="/order/"  ><p onClick={this.onClose}>My Order</p></Link>
                                     <p><a href="/" onClick={this.logout}>Sign Out</a></p>
                                 </Drawer>
                             </li>

@@ -38,7 +38,7 @@ do(e){
 }
 
 componentDidMount(){
-axios.get("http://localhost:8080/type/Victorian_Jewellery")
+axios.get("/type/Victorian_Jewellery")
   .then((res)=>{
     console.log(res)
     let db=this.props.db;
@@ -130,7 +130,7 @@ axios.get("http://localhost:8080/type/Victorian_Jewellery")
       cover={
         <img
           alt="example"
-          src={`http://localhost:8080/${p.image}`}
+          src={`/${p.image}`}
         />
       }
       actions={[<Link to='/cart'><Button variant="warning" onClick={()=>{this.props.addProduct(p)}}>Add To Cart</Button></Link>]}

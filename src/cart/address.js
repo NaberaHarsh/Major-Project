@@ -58,15 +58,24 @@ getValue2(f){
             getValue8(l){
           this.pno=l.target.value;  }
 
+          sendData(p){
+            let order={cartinfo:this.props.db.cart , name:p.name, house:p.house, street:p.street, city:p.city, state:p.state, pincode:p.pincode, mail:p.mail, pno:p.pno }
+    axios.post(' /showorder',order)
+    .then((res)=>{
+      console.log(res)
+    })
+
+          }
+
 setValue(){
   let obj={name:this.name, house:this.house, street:this.street, city:this.city, state:this.state, pincode:this.pincode, mail:this.mail, pno:this.pno}
-  axios.post('http://localhost:8080/userAddress', obj)
+  axios.post(' /userAddress', obj)
 .then((res)=>{
 console.log(res)
  })
 
  let order={cartinfo:this.props.db.cart , name:this.name, house:this.house, street:this.street, city:this.city, state:this.state, pincode:this.pincode, mail:this.mail, pno:this.pno }
-    axios.post('http://localhost:8080/showorder',order)
+    axios.post(' /showorder',order)
     .then((res)=>{
       console.log(res)
     })
@@ -80,7 +89,7 @@ console.log(res)
                     <Card.Title>Shipping Address</Card.Title>
                     <br></br>
                     <br></br>
-                    <input type="radio" onChange={(e)=> this.Change(e)} name="add" value="new" /><label >Enter New Address</label> 
+                    <input type="radio" onChange={(e)=> this.Change(e)} name="add" value="new" /><label required>Enter New Address</label> 
                                       
                     
 
@@ -89,31 +98,31 @@ style={this.state.visible}
 >
     
     <Form.Label>Name</Form.Label>
-  <Form.Control type="Text" placeholder="Enter Name" onChange={(e)=> this.getValue1(e)}/>
+  <Form.Control type="Text" placeholder="Enter Name" onChange={(e)=> this.getValue1(e)} required/>
   <Form.Label>House NO.</Form.Label>
-  <Form.Control type="number" placeholder="Enter  House Number" onChange={(f)=> this.getValue2(f)}/>
+  <Form.Control type="number" placeholder="Enter  House Number" onChange={(f)=> this.getValue2(f)} required />
   <Form.Label>Street</Form.Label>
-  <Form.Control type="Text" placeholder="Enter Street Name" onChange={(g)=> this.getValue3(g)}/>
+  <Form.Control type="Text" placeholder="Enter Street Name" onChange={(g)=> this.getValue3(g)}  required/>
   <Form.Label>City</Form.Label>
-  <Form.Control type="Text" placeholder="Enter City Name" onChange={(h)=> this.getValue4(h)}/>
+  <Form.Control type="Text" placeholder="Enter City Name" onChange={(h)=> this.getValue4(h)} required/>
   <Form.Label>State</Form.Label>
-  <Form.Control type="Text" placeholder="Enter State Name"onChange={(i)=> this.getValue5(i)} />
+  <Form.Control type="Text" placeholder="Enter State Name"onChange={(i)=> this.getValue5(i)} required/>
     <Form.Label>Email address</Form.Label>
     <Form.Group controlId="formBasicEmail">
-    <Form.Control type="email" placeholder="Enter email" onChange={(k)=> this.getValue7(k)} />
+    <Form.Control type="email" placeholder="Enter email" onChange={(k)=> this.getValue7(k)} required/>
     <Form.Label>Pincode</Form.Label>
-  <Form.Control type="Text" placeholder="Enter Pincode" onChange={(j)=> this.getValue6(j)}/>
+  <Form.Control type="Text" placeholder="Enter Pincode" onChange={(j)=> this.getValue6(j)} required/>
   <Form.Label>Phone NO.</Form.Label>
-  <Form.Control type="Text" placeholder="Enter Phone Number" onChange={(l)=> this.getValue8(l)}/>
+  <Form.Control type="Text" placeholder="Enter Phone Number" maxlength="10" onChange={(l)=> this.getValue8(l)} required />
     
   </Form.Group>
   </Form>
-  <input type="radio" name="add" onChange={(e)=> this.Change(e)} value="saved" /><label>Use Saved Address</label>
+  <input type="radio" name="add" onChange={(e)=> this.Change(e)} value="saved" /><label required>Use Saved Address</label>
                     
                     <Row>
                     <div style={this.state.saved_visible}>
                     {this.props.db.address.map(p=> <Col span={8}>
-                    <Card style={{width:"15rem"}}>
+                    <Card style={{width:"15rem"}} onClick={()=> this.sendData(p)} >
                     <Card.Title>{p.name}</Card.Title>
                     <Card.Body>{p.house},{p.street}<br></br>{p.city},{p.state}<br></br>{p.pincode}</Card.Body>
 
@@ -128,7 +137,7 @@ style={this.state.visible}
 <br></br>
 
 
-<Link to='/payment'>
+ <Link to='/payment'>
   <Button variant="warning" type="submit" onClick={()=> this.setValue()}>
     Proceed To Pay
   </Button>

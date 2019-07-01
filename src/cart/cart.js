@@ -5,48 +5,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {List, Avatar} from 'antd'
 
 
-
-// class Cart extends React.Component{
-
-  
-//   render(){
-
-// return(
-//   <div  style={{textAlign:"center"}}>
-//     <Table>
-//         <thead>
-//           <tr>
-//             <th>Shopping cart</th>
-//             <th></th>
-//             <th>Price</th>
-//             <th>Quantity</th>
-//             <th></th>
-//             </tr>
-//             </thead>
-//     {this.props.db.cart.map(p=>
-      
-
-//             <tr>
-        
-//         <td>
-//           <Link to='/item1/'><img src={p.image} id="hh"></img></Link>
-//           </td>
-//         <td>{p.name}</td>
-//         <td style={{color:"darkred"}}>{p.Price}</td>
-//         <td><form>
-//           <select>
-            
-//           <option>1</option>
-//           <option>2</option>
-//           <option>3</option>
-//           <option>4</option>
-//           <option>5</option></select></form></td>
-//         <td><Button variant="warning">Remove Item</Button></td>
-        
-//       </tr>
-            
-//        )}
-//        </Table> 
 class Cart extends React.Component{
 
   render(){
@@ -69,7 +27,7 @@ class Cart extends React.Component{
                   <tr>
               
               <td>
-                <Link to='/item1/'><img src={`http://localhost:8080/${item.image}`} id="hh" onClick={()=> this.props.itemDetail(item)}></img></Link>
+                <Link to='/item1/'><img src={`/${item.image}`} id="hh" onClick={()=> this.props.itemDetail(item)}></img></Link>
                 </td>
               <td>{item.name}</td>
               <td style={{color:"darkred"}}>{item.price}</td>

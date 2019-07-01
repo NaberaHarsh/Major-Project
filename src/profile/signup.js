@@ -32,7 +32,7 @@ class Signup extends React.Component{
 
         Submit(){
           let obj={name:this.name, phone:this.phone, mail:this.mail, pass:this.pass}
-          axios.post('http://localhost:8080/account', obj)
+          axios.post('/account', obj)
         .then((res)=>{
       console.log(res)
          })
