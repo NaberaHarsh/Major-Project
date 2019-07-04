@@ -67,7 +67,7 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state={};
-    this.state.user={};
+    this.state.india="";
     this.state.value="";
 this.state.type="";
 
@@ -107,7 +107,8 @@ this.state.type="";
 }
 
 
-googleLogin(){
+googleLogin(e){
+  e.preventDefault();
   var provider = new firebase.auth.GoogleAuthProvider();
 
 
@@ -136,6 +137,30 @@ googleLogin(){
   
 }
 
+checkLogin(){
+  firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          india:user.uid
+        })
+        this.setState({
+            display:user.displayName
+        })
+        this.getCart(user.uid);
+        this.getOrder(user.uid);
+        this.getaddress(user.uid);
+
+        console.log("logged in",user.uid)
+        
+      } else {
+          this.setState({
+              display:"Login"
+            })
+        console.log("logged out")
+      }
+    });
+}
+
 
 hello=(item)=>{
   console.log(item);
@@ -153,33 +178,38 @@ this.setState({
   
 }
 
-
-
-componentDidMount(){
-   
-  axios.get('/cartItem?uid='+this.state.user.uid)
-  .then((res)=>{
-    console.log(res)
-    let db=this.state.db;
-    db.cart=res.data;
-    this.setState({
-      db:db
-    })
-  })
-
+// individual=(item)=>{
+//   console.log(item);
+// this.setState({
+//   india:item
+// })
   
+// }
+getCart(uid){
+  axios.get("/cartItem?uid="+uid).then(
+    (res)=>{
+      console.log(res)
+      let db = this.state.db;
+      db.cart = res.data;
+        this.setState({
+           db:db
+        })
+      })
+}
+getOrder(uid){
+  axios.get("/getorder?uid="+uid).then(
+    (res)=>{
+      console.log(res)
+      let db = this.state.db;
+      db.order = res.data;
+        this.setState({
+           db:db
+        })
+      })
+}
 
-  axios.get('/getorder')
-  .then((res)=>{
-    console.log(res)
-    let db=this.state.db;
-    db.order=res.data;
-    this.setState({
-      db:db
-    })
-  })
-
-  axios.get('/getAddress')
+getaddress(uid){
+  axios.get("/getAddress?uid="+uid)
   .then((res)=>{
     console.log(res)
     let db=this.state.db;
@@ -188,6 +218,13 @@ componentDidMount(){
       db:db
     })
   })
+}
+
+
+componentDidMount(){
+  
+  this.checkLogin();
+  
 }
 
 itemDetail(item){
@@ -202,7 +239,7 @@ itemDetail(item){
 addProductToCart(item){
 console.log(item)
 
-  let obj={id:item.id, name:item.name, price:item.price, image:item.image, uid:this.state.user.uid}
+  let obj={id:item.id, name:item.name, price:item.price, image:item.image, uid:this.state.india}
   axios.post('/showcart',obj)
   .then((res)=>{
     console.log(res)
@@ -440,7 +477,7 @@ newArrival(){
     <Router>
        <div>
       <h1 id="title">Mahek Jewellery</h1>
-      <Navigation  hey={this.hey.bind(this)}  hello={this.hello.bind(this)} googleLogin={this.googleLogin.bind(this)}/>
+      <Navigation  hey={this.hey.bind(this)}  hello={this.hello.bind(this)}  googleLogin={this.googleLogin.bind(this)} display={this.state.display}/>
       <Route path="/" exact component={ControlledCarousel} />
       <Route path="/" exact  render={(props)=><Cards {...props} hello={this.hello}></Cards>} />
       <br></br>
@@ -465,11 +502,11 @@ newArrival(){
     < Route path='/victorian/' render={()=> <Victorian db={this.state.db} hey={this.hey.bind(this)} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
     < Route path='/antique/' render={()=> <Antique db={this.state.db} hey={this.hey.bind(this)} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}  sortAscending={this.sortAscending.bind(this)}  sortDescending={this.sortDescending.bind(this)} itemDetail={this.itemDetail.bind(this)} filter0={this.filter0.bind(this)} filter500={this.filter500.bind(this)} filter1500={this.filter1500.bind(this)} filter2500={this.filter2500.bind(this)} filter5000={this.filter5000.bind(this)} AD={this.AD.bind(this)} VJ={this.VJ.bind(this)} AM={this.AM.bind(this)} wedding={this.wedding.bind(this)} diwali={this.diwali.bind(this)} navratra={this.navratra.bind(this)} best={this.best.bind(this)} newArrival={this.newArrival.bind(this)} /> } />
     <Route path="/item1/" render={()=> <Item db={this.state.db} addProduct={this.addProductToCart.bind(this)} addOrder={this.addProductToOrder.bind(this)}/>}   />
-      <Route path="/cart/" render={()=> <Cart db={this.state.db} changeQuantity={this.changeQuantity.bind(this)} addOrder={this.addProductToOrder.bind(this)} deleteItem={this.deleteFromCart.bind(this)} itemDetail={this.itemDetail.bind(this)} />} />
+      <Route path="/cart/" render={()=> <Cart india={this.state.india} user={this.state.user} db={this.state.db} changeQuantity={this.changeQuantity.bind(this)} addOrder={this.addProductToOrder.bind(this)} deleteItem={this.deleteFromCart.bind(this)} itemDetail={this.itemDetail.bind(this)} />} />
       <Route path="/review/" component={Review} />
       <Route path="/payment/" component={Payment} />
       <Route path="/placed/" component={Placed} />
-      <Route path="/address/" render={()=> <Address db={this.state.db} addOrder={this.addProductToOrder.bind(this)}/>} />
+      <Route path="/address/" render={()=> <Address india={this.state.india} db={this.state.db} addOrder={this.addProductToOrder.bind(this)}/>} />
       <Route path="/help/" component={Help} />  
       <Route path="/drawer/" component={Drawer1} />
       {/* <Route path="/track/" render={()=> <Track db={this.state.db} />} />  */}

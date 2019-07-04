@@ -18,7 +18,6 @@ class Navigation extends React.Component {
         super(props);
         this.state={};
         this.state.value="";
-        this.checkLogin()
                 
     }
         state = { visible: false };
@@ -39,24 +38,8 @@ class Navigation extends React.Component {
         //           }
 
         
+  
 
-
-    checkLogin(){
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              this.setState({
-                user:user.displayName
-              })
-              
-              console.log("logged in",user)
-            } else {
-                this.setState({
-                    user:"Login"
-                  })
-              console.log("logged out")
-            }
-          });
-     }
 
     logout(){
         firebase.auth().signOut().then(function() {
@@ -130,7 +113,7 @@ this.setState({
                             </li>
 
                             <li className="nav-item">
-                                <Button onClick={()=>{this.showDrawer();  this.checkLogin()} } variant="outline-light">Profile</Button>
+                                <Button onClick={()=>{this.showDrawer()} } variant="outline-light">Profile</Button>
                                 <Drawer 
                                     title='Profile' 
                                     placement="right"
@@ -139,7 +122,7 @@ this.setState({
                                     visible={this.state.visible}
                                 >
                                     
-                                    <p><Link  onClick={()=> {this.onClose(); this.props.googleLogin()} }>{this.state.user}</Link> </p>
+                                    <p><Link  onClick={(e)=> {this.onClose(); this.props.googleLogin(e)} }>{this.props.display}</Link> </p>
                                     <Link to="/order/"  ><p onClick={this.onClose}>My Order</p></Link>
                                     <p><a href="/" onClick={this.logout}>Sign Out</a></p>
                                 </Drawer>

@@ -3,9 +3,12 @@ import './cart.css'
 import { Table, columns, Button} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {List, Avatar} from 'antd'
+import axios from 'axios';
+
 
 
 class Cart extends React.Component{
+   
 
   render(){
   return (
